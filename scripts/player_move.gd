@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # Object References
-@onready var camera = $SpringArm3D/Camera3D
+@export var camera : Node3D
 
 # Movement Variables
 const ACCEL_SPEED = 3
@@ -14,7 +14,7 @@ const JUMP_VELOCITY = 20
 var _move_axis = Vector2.ZERO
 var jump_pressed = false
 
-func _process(event):
+func _process(_delta):
 	var h = Input.get_axis("move_left", "move_right")
 	var v = Input.get_axis("move_back", "move_forward")
 	_move_axis = Vector2(h, v)
@@ -28,7 +28,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	#direction from camera to player
-	var dir3d = (position - camera.position)
+	var dir3d = (global_position - camera.global_position)
+	print(global_position)
 	#remove the height and normalize to get a direction vector
 	var dir = Vector3(dir3d.x, 0, dir3d.z).normalized()
 	
@@ -37,6 +38,5 @@ func _physics_process(delta):
 	
 	velocity.x = move_horizontal_velocity.x
 	velocity.z = move_horizontal_velocity.z
-	
 	
 	move_and_slide()
