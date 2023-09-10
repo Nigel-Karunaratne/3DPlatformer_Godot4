@@ -2,6 +2,9 @@ extends SpringArm3D
 
 #TODO - Add Bounds for vertical rotation
 
+@export var player : Node3D
+const CAMERA_SPEED = 0.9
+
 const CONTROLLER_LOOK_H_SPEED = 1
 const CONTROLLER_LOOK_V_SPEED = 1
 
@@ -43,6 +46,10 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Smooth move to Player Location
+	if player != null:
+		position = position.move_toward(player.position, CAMERA_SPEED)
+
 	# Controller Input
 	var look_h = Input.get_axis("look_left", "look_right") * (-1 if controller_invert_look_h else 1)
 	var look_v = Input.get_axis("look_down", "look_up") * (-1 if controller_invert_look_v else 1)
