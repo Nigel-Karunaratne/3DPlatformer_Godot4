@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpm03fq4x77bb"]
+
+[ext_resource type="Texture2D" uid="uid://btmbgxap81sai" path="res://textures/CafeAuLaitGrid.png" id="1_8gwwp"]
+
+[resource]
+albedo_texture = ExtResource("1_8gwwp")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
