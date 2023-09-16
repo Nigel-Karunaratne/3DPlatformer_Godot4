@@ -4,7 +4,7 @@
 
 [node name="SpringArm3D" type="SpringArm3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-spring_length = 5.0
+spring_length = 6.5
 margin = 0.25
 script = ExtResource("1_23t0m")
 
