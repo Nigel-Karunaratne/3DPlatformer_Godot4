@@ -1,3 +1,4 @@
+class_name PlayerMove
 extends CharacterBody3D
 
 # Object References
@@ -64,3 +65,9 @@ func _physics_process(delta):
 		velocity.z = 0
 	print(Vector2(velocity.x, velocity.z).length())
 	move_and_slide()
+
+
+
+func launch_player_spring(new_velocity: Vector3):
+	velocity = new_velocity
+	return
