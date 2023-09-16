@@ -6,7 +6,7 @@ extends CharacterBody3D
 # Movement Variables
 const ACCEL_SPEED = 2
 const MAX_SPEED = 9
-const GRAVITY = 26
+const GRAVITY = 30
 const JUMP_VELOCITY = 12
 const ANGULAR_SPEED = TAU * 2
 
@@ -36,7 +36,8 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	_move_axis = _move_axis.rotated(Vector3.UP, camera.rotation.y).normalized();
+	if camera != null:
+		_move_axis = _move_axis.rotated(Vector3.UP, camera.rotation.y).normalized();
 
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
@@ -57,5 +58,9 @@ func _physics_process(delta):
 		rotation.y = target_angle	
 		pass
 	
+
+	if Vector2(velocity.x, velocity.z).length() < 0.1:
+		velocity.x = 0
+		velocity.z = 0
 	print(Vector2(velocity.x, velocity.z).length())
 	move_and_slide()
