@@ -3,33 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="1_3pse8"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="1_r1r6b"]
 [ext_resource type="Material" uid="uid://dpm03fq4x77bb" path="res://materials/m_grid_cafeaulait.tres" id="3_0rfjg"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pjlli"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_647md"]
+[ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="4_oyh3i"]
+[ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="5_7k8gs"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84053, 0)
-collision_mask = 9
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_pjlli")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_647md")
-skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79672, 0.604349, 0, -0.604349, 0.79672, 0, 4, 0)
 
 [node name="SpringArm3D2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_3pse8")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.37437, 1.73453, -3.21905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37437, 1.73453, 5.78095)
 player = NodePath("../CharacterBody3D")
 
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_r1r6b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37437, 0.734527, -3.21905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37437, 0.734527, 2.78095)
 camera = NodePath("../SpringArm3D2")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -40,7 +27,7 @@ size = Vector3(10, 1, 10)
 material = ExtResource("3_0rfjg")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 size = Vector3(4, 1, 10)
 material = ExtResource("3_0rfjg")
 
@@ -55,6 +42,15 @@ size = Vector3(4, 4, 4)
 material = ExtResource("3_0rfjg")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.53553, 0, 23.7071)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.41422, 0, -26.4975)
 size = Vector3(4, 1, 10)
 material = ExtResource("3_0rfjg")
+
+[node name="Spring" parent="." instance=ExtResource("4_oyh3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
+velocity = 50.0
+
+[node name="Launcher" parent="." instance=ExtResource("5_7k8gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+velocity = 100.0
+additional_direction = Vector3(0, 5, 0)
