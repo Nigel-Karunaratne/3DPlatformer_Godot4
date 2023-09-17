@@ -72,4 +72,5 @@ func _physics_process(delta):
 
 func launch_player_spring(new_velocity: Vector3):
 	velocity = new_velocity
+	is_currently_jumping = false
 	return
