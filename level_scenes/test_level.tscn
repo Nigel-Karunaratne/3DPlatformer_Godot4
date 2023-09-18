@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhg435sgwtowo"]
+[gd_scene load_steps=7 format=3 uid="uid://dhg435sgwtowo"]
 
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="1_3pse8"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="1_r1r6b"]
 [ext_resource type="Material" uid="uid://dpm03fq4x77bb" path="res://materials/m_grid_cafeaulait.tres" id="3_0rfjg"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="4_oyh3i"]
 [ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="5_7k8gs"]
+[ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_u3ngf"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -32,7 +33,12 @@ size = Vector3(4, 1, 10)
 material = ExtResource("3_0rfjg")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, 2)
+size = Vector3(4, 8, 6)
+material = ExtResource("3_0rfjg")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3.5, 2)
 size = Vector3(4, 4, 6)
 material = ExtResource("3_0rfjg")
 
@@ -41,16 +47,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -3)
 size = Vector3(4, 4, 4)
 material = ExtResource("3_0rfjg")
 
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.5, -3)
+size = Vector3(4, 4, 4)
+material = ExtResource("3_0rfjg")
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.41422, 0, -26.4975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41422, -2, -23.4975)
 size = Vector3(4, 1, 10)
+material = ExtResource("3_0rfjg")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58578, -4, -31.4975)
+size = Vector3(4, 1, 10)
+material = ExtResource("3_0rfjg")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.58578, -4, -41.4975)
+size = Vector3(4, 1, 10)
+material = ExtResource("3_0rfjg")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5858, -5, -42.4975)
+size = Vector3(6, 1, 10)
+material = ExtResource("3_0rfjg")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.5858, 1, -42.4975)
+size = Vector3(6, 1, 10)
 material = ExtResource("3_0rfjg")
 
 [node name="Spring" parent="." instance=ExtResource("4_oyh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
 velocity = 50.0
 
+[node name="Spring2" parent="." instance=ExtResource("4_oyh3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -4.1, -42.5)
+velocity = 20.0
+
 [node name="Launcher" parent="." instance=ExtResource("5_7k8gs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
-velocity = 100.0
+velocity = 50.0
 additional_direction = Vector3(0, 5, 0)
+
+[node name="Launcher2" parent="." instance=ExtResource("5_7k8gs")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -2.23445, 3, -5)
+velocity = 50.0
+
+[node name="AcceleratorPad" parent="." instance=ExtResource("6_u3ngf")]
+transform = Transform3D(1, 0, 3.85534e-07, 0, 1, 0, -4.37114e-08, 0, 8.82, 6.18388, 1, -8.45295)
+applied_force = 0.2
