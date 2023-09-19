@@ -14,6 +14,7 @@ const ANGULAR_SPEED = TAU * 2.5
 const SHORT_HOP_MULTIPLIER = 0.5
 
 @export var friction = 0.8
+@onready var friction_reset_timer = $FrictionResetTimer
 
 # Input Processing variables
 var _move_axis = Vector3.ZERO
@@ -81,6 +82,7 @@ func launch_player_spring(new_velocity: Vector3):
 	velocity = new_velocity
 	is_currently_jumping = false
 	friction = 0.875
-	await get_tree().create_timer(0.25).timeout
+	friction_reset_timer.start()
+	await friction_reset_timer.timeout
 	friction = 0.8
 	return

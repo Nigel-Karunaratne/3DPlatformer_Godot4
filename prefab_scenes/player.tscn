@@ -22,3 +22,6 @@ mesh = SubResource("BoxMesh_7qsbd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_uhjob")
+
+[node name="FrictionResetTimer" type="Timer" parent="."]
+wait_time = 0.25
