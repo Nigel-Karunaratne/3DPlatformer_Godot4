@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7r4lht586kmd"]
+
+[ext_resource type="Script" path="res://scripts/moving_platform_controller.gd" id="1_bxg8p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_13ny8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ova"]
+size = Vector3(2.1, 0.2, 2.1)
+
+[node name="MovingPlatform3D" type="Path3D"]
+script = ExtResource("1_bxg8p")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000205799, 0, -1.02433e-05)
+rotation_mode = 0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PathFollow3D"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D/AnimatableBody3D"]
+transform = Transform3D(2.1, 0, 0, 0, 0.2, 0, 0, 0, 2.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_13ny8")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_t4ova")

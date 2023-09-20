@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhg435sgwtowo"]
+[gd_scene load_steps=9 format=3 uid="uid://dhg435sgwtowo"]
 
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="1_3pse8"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="1_r1r6b"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="4_oyh3i"]
 [ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="5_7k8gs"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_u3ngf"]
+[ext_resource type="PackedScene" uid="uid://b7r4lht586kmd" path="res://prefab_scenes/moving_platform.tscn" id="7_0j5ta"]
+
+[sub_resource type="Curve3D" id="Curve3D_o6vny"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00709724, -0.00570989, 0.00707912, 0, 0, 0, 0, 0, 0, 0.0482016, 2.50156, -2.47815, 0, 0, 0, 0, 0, 0, 0.907405, 2.16044, -7.01987),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Node3D" type="Node3D"]
 
@@ -86,8 +94,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -4.1, -42.5)
 velocity = 20.0
 
 [node name="Launcher" parent="." instance=ExtResource("5_7k8gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.46642, 8.64239, 2.41827)
 velocity = 50.0
+additional_direction = Vector3(0, 5, 0)
+
+[node name="Launcher3" parent="." instance=ExtResource("5_7k8gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53358, 8.64239, 2.41827)
+velocity = 50.0
+additional_direction = Vector3(0, 5, 0)
+
+[node name="Launcher4" parent="." instance=ExtResource("5_7k8gs")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.53358, 8.64239, -0.643183)
 additional_direction = Vector3(0, 5, 0)
 
 [node name="Launcher2" parent="." instance=ExtResource("5_7k8gs")]
@@ -97,3 +114,7 @@ velocity = 50.0
 [node name="AcceleratorPad" parent="." instance=ExtResource("6_u3ngf")]
 transform = Transform3D(1, 0, 3.85534e-07, 0, 1, 0, -4.37114e-08, 0, 8.82, 6.18388, 1, -8.45295)
 applied_force = 0.2
+
+[node name="MovingPlatform3D" parent="." instance=ExtResource("7_0j5ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.866045, -1)
+curve = SubResource("Curve3D_o6vny")

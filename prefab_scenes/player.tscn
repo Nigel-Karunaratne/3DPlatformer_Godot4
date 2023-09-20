@@ -9,6 +9,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhjob"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+platform_on_leave = 1
 script = ExtResource("1_ldjrb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
