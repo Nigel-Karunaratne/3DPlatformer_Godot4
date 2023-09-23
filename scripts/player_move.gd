@@ -16,6 +16,9 @@ const SHORT_HOP_MULTIPLIER = 0.5
 @export var friction = 0.8
 @onready var friction_reset_timer = $FrictionResetTimer
 
+var influence_velocity : Vector3 = Vector3.ZERO
+var influence_velocity_decay = 0.9675
+
 # Input Processing variables
 var _move_axis = Vector3.ZERO
 var jump_pressed = false
@@ -46,6 +49,7 @@ func _physics_process(delta):
 		velocity.y -= GRAVITY * delta
 	elif is_currently_jumping: # Landed back on ground
 		is_currently_jumping = false
+		influence_velocity = Vector3.ZERO
 	
 	if jump_pressed && is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -64,6 +68,11 @@ func _physics_process(delta):
 		
 	velocity.x += _move_axis.x * ACCEL_SPEED
 	velocity.z += _move_axis.z * ACCEL_SPEED
+
+	velocity.x += influence_velocity.x
+	velocity.z += influence_velocity.z
+	# velocity += influence_velocity 
+	influence_velocity *= influence_velocity_decay
 	
 	velocity.x *= friction
 	velocity.z *= friction
@@ -75,14 +84,17 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.z = 0
 	
-	print(Vector2(velocity.x, velocity.z).length())
+	# print(Vector2(velocity.x, velocity.z).length())
+	print(influence_velocity)
 	move_and_slide()
 
 func launch_player_spring(new_velocity: Vector3):
-	velocity = new_velocity
-	is_currently_jumping = false
-	friction = 0.875
-	friction_reset_timer.start()
-	await friction_reset_timer.timeout
-	friction = 0.8
+	# velocity = new_velocity
+	# is_currently_jumping = false
+	# friction = 0.875
+	# friction_reset_timer.start()
+	# await friction_reset_timer.timeout
+	# friction = 0.8
+
+	influence_velocity = new_velocity
 	return

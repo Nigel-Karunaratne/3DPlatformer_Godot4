@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var velocity: float = 100
+@export var overwrite_velocity = false
 
 enum UsedBasis {
 	BASIS_Z_MINUS,
@@ -12,7 +13,14 @@ enum UsedBasis {
 
 func _on_body_entered(body:Node3D):
 	if body is PlayerMove:
-		if direction == UsedBasis.BASIS_Y:
-			body.launch_player_spring((velocity * basis.y) + additional_direction)
-		else:
-			body.launch_player_spring((velocity * -basis.z) + additional_direction)
+		match direction:
+			UsedBasis.BASIS_Y:
+				if overwrite_velocity:
+					body.velocity = Vector3.ZERO
+				body.launch_player_spring((velocity * basis.y))
+				body.velocity += additional_direction
+			UsedBasis.BASIS_Z_MINUS:
+				if overwrite_velocity:
+					body.velocity = Vector3.ZERO
+				body.launch_player_spring((velocity * -basis.z))
+				body.velocity += additional_direction
