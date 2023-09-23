@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhg435sgwtowo"]
+[gd_scene load_steps=10 format=3 uid="uid://dhg435sgwtowo"]
 
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="1_3pse8"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="1_r1r6b"]
@@ -10,10 +10,17 @@
 
 [sub_resource type="Curve3D" id="Curve3D_o6vny"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00709724, -0.00570989, 0.00707912, 0, 0, 0, 0, 0, 0, 0.0482016, 2.50156, -2.47815, 0, 0, 0, 0, 0, 0, 0.907405, 2.16044, -7.01987),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.006, 0.007, 0, 0, 0, 0, 0, 0, 0.048, 1.882, -2.478, 0, 0, 0, 0, 0, 0, 0, 2.16, -7.02),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_xetao"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.006, 0.007, 0, 0, 0, 0, 0, 0, 0.048, 1.882, -2.478, 0, 0, 0, 0, 0, 0, 0, 2.16, -7.02, 0, 0, 0, 0, 0, 0, 0, 9.655, -5.525),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Node3D" type="Node3D"]
 
@@ -116,5 +123,11 @@ transform = Transform3D(1, 0, 3.85534e-07, 0, 1, 0, -4.37114e-08, 0, 8.82, 6.183
 applied_force = 0.2
 
 [node name="MovingPlatform3D" parent="." instance=ExtResource("7_0j5ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.866045, -1)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28263, 0.866045, -1)
 curve = SubResource("Curve3D_o6vny")
+speed = 6
+
+[node name="MovingPlatform3D2" parent="." instance=ExtResource("7_0j5ta")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28263, 0.866045, 1.83515)
+curve = SubResource("Curve3D_xetao")
+speed = 6
