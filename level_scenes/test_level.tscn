@@ -131,3 +131,9 @@ speed = 6
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28263, 0.866045, 1.83515)
 curve = SubResource("Curve3D_xetao")
 speed = 6
+
+[node name="MovingPlatform3D3" parent="." instance=ExtResource("7_0j5ta")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28263, 0.866045, 4.66931)
+curve = SubResource("Curve3D_xetao")
+type = 1
+speed = 6
