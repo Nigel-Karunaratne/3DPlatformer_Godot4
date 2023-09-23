@@ -8,8 +8,10 @@
 
 [node name="Spring" type="Area3D"]
 script = ExtResource("1_ul8v4")
-velocity = 12.0
+velocity = 0.0
+overwrite_velocity = true
 direction = 1
+additional_direction = Vector3(0, 20, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_af06j")
