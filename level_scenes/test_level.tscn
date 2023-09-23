@@ -47,6 +47,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 size = Vector3(4, 1, 10)
 material = ExtResource("3_0rfjg")
 
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03988, -2.24601, -10.7745)
+size = Vector3(4, 1, 14)
+material = ExtResource("3_0rfjg")
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, 2)
 size = Vector3(4, 8, 6)
@@ -102,21 +107,30 @@ velocity = 20.0
 
 [node name="Launcher" parent="." instance=ExtResource("5_7k8gs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.46642, 8.64239, 2.41827)
-velocity = 50.0
+velocity = 14.0
 additional_direction = Vector3(0, 5, 0)
 
 [node name="Launcher3" parent="." instance=ExtResource("5_7k8gs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53358, 8.64239, 2.41827)
-velocity = 50.0
-additional_direction = Vector3(0, 5, 0)
+velocity = 14.0
+overwrite_velocity = true
 
 [node name="Launcher4" parent="." instance=ExtResource("5_7k8gs")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.53358, 8.64239, -0.643183)
-additional_direction = Vector3(0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.53358, 8.64239, -1.69649)
+velocity = 14.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 25, 0)
+
+[node name="Launcher5" parent="." instance=ExtResource("5_7k8gs")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.53358, 2.64239, -1.69649)
+velocity = 14.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 25, 0)
 
 [node name="Launcher2" parent="." instance=ExtResource("5_7k8gs")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -2.23445, 3, -5)
-velocity = 50.0
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -2.234, 1.225, -5)
+velocity = 14.0
+additional_direction = Vector3(0, 10, 0)
 
 [node name="AcceleratorPad" parent="." instance=ExtResource("6_u3ngf")]
 transform = Transform3D(1, 0, 3.85534e-07, 0, 1, 0, -4.37114e-08, 0, 8.82, 6.18388, 1, -8.45295)
