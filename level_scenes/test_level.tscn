@@ -99,15 +99,10 @@ material = ExtResource("3_0rfjg")
 
 [node name="Spring" parent="." instance=ExtResource("4_oyh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
-velocity = 0.0
-overwrite_velocity = true
 additional_direction = Vector3(0, 40, 0)
 
 [node name="Spring2" parent="." instance=ExtResource("4_oyh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -4.1, -42.5)
-velocity = 0.0
-overwrite_velocity = true
-additional_direction = Vector3(0, 20, 0)
 
 [node name="Launcher" parent="." instance=ExtResource("5_7k8gs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.46642, 8.64239, 2.41827)
