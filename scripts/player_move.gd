@@ -4,8 +4,10 @@ extends CharacterBody3D
 # Object References
 @export var camera : Node3D
 
+var _fly = false##!!DEBUG
+
 # Movement Variables
-const ACCEL_SPEED = 2
+const ACCEL_SPEED = 2.1
 const MAX_SPEED = 9
 const GRAVITY = 30
 const JUMP_VELOCITY = 12
@@ -18,6 +20,8 @@ const SHORT_HOP_MULTIPLIER = 0.5
 
 var influence_velocity : Vector3 = Vector3.ZERO
 var influence_velocity_decay = 0.9675
+var influence_velocity_decay_grounded = 0.75
+var on_accel_pad = false
 
 # Input Processing variables
 var _move_axis = Vector3.ZERO
@@ -45,15 +49,29 @@ func _physics_process(delta):
 	if camera != null:
 		_move_axis = _move_axis.rotated(Vector3.UP, camera.rotation.y).normalized();
 
+	##!!!! DEBUG
+	if Input.is_action_just_pressed("jump") and Input.is_key_pressed(KEY_F):
+		_fly = !_fly
+	if _fly:
+		velocity.x = _move_axis.x * ACCEL_SPEED * 20
+		velocity.y = ACCEL_SPEED * 20 * (1 if jump_pressed else 0)
+		velocity.z = _move_axis.z * ACCEL_SPEED * 20
+		move_and_slide()
+		return
+
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 	elif is_currently_jumping: # Landed back on ground
 		is_currently_jumping = false
-		influence_velocity = Vector3.ZERO
 	
-	if jump_pressed && is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		is_currently_jumping = true
+	if is_on_floor():
+		if jump_pressed:
+			velocity.y = JUMP_VELOCITY
+			is_currently_jumping = true
+		# if not on_accel_pad and influence_velocity != Vector3.ZERO:
+		# 	influence_velocity = Vector3.ZERO
+
+		
 	
 	if _move_axis.length_squared() > 0:
 		# Rotate the Player
@@ -69,11 +87,17 @@ func _physics_process(delta):
 	velocity.x += _move_axis.x * ACCEL_SPEED
 	velocity.z += _move_axis.z * ACCEL_SPEED
 
+	
 	velocity.x += influence_velocity.x
 	velocity.z += influence_velocity.z
-	# velocity += influence_velocity 
-	influence_velocity *= influence_velocity_decay
 	
+	if is_on_floor():
+		influence_velocity *= influence_velocity_decay_grounded
+	else:
+		influence_velocity *= influence_velocity_decay
+	if influence_velocity.length() < 0.001:
+		influence_velocity = Vector3.ZERO
+		
 	velocity.x *= friction
 	velocity.z *= friction
 			
