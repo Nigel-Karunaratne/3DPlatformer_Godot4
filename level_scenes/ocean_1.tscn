@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://6pjvbsvcv7pl"]
+[gd_scene load_steps=22 format=3 uid="uid://6pjvbsvcv7pl"]
 
+[ext_resource type="Environment" uid="uid://dqfbbn1u2jts1" path="res://post_processing/worldenv_ocean.tres" id="1_7kusb"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="3_iycpa"]
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="4_h40nl"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="5_vc5q2"]
@@ -15,10 +16,21 @@
 [ext_resource type="PackedScene" uid="uid://udlo7qpq67ck" path="res://models/ocean/O_SPlatform8.glb" id="15_gh2ao"]
 [ext_resource type="PackedScene" uid="uid://0powgvsev7wh" path="res://models/ocean/O_SPlatform9.glb" id="16_3ikbo"]
 [ext_resource type="PackedScene" uid="uid://b6huiyp157q1c" path="res://models/ocean/O_SPlatform10.glb" id="17_v2n38"]
+[ext_resource type="PackedScene" uid="uid://b17m58w3rbuaw" path="res://models/ocean/O_PillarPlatform1.glb" id="18_1p7cy"]
 [ext_resource type="PackedScene" uid="uid://yb1c3quvku8c" path="res://models/ocean/O_SPlatform11.glb" id="18_pkd76"]
+[ext_resource type="Material" uid="uid://cxikbsb8hs10" path="res://materials/ocean/ocean_water.tres" id="19_mt5vj"]
 [ext_resource type="PackedScene" uid="uid://c3s5x1ncctc6w" path="res://models/ocean/O_SPlatform12.glb" id="19_svoms"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_tg6k4"]
+material = ExtResource("19_mt5vj")
+size = Vector2(2000, 2000)
+subdivide_width = 300
+subdivide_depth = 300
+
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_7kusb")
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
@@ -46,6 +58,103 @@
 
 [node name="O_SPlatform12" parent="LevelGeometry" instance=ExtResource("19_svoms")]
 
+[node name="O_PillarPlatform1" parent="LevelGeometry" instance=ExtResource("18_1p7cy")]
+
+[node name="O_PillarPlatform2" parent="LevelGeometry" instance=ExtResource("18_1p7cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -2, -8)
+
+[node name="O_PillarPlatform3" parent="LevelGeometry" instance=ExtResource("18_1p7cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4.5, -16)
+
+[node name="O_PillarPlatform4" parent="LevelGeometry" instance=ExtResource("18_1p7cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -4.5, -25.5)
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="AcceleratorPad" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 12, 23, 2, -49)
+applied_force = 0.2
+
+[node name="AcceleratorPad3" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(-1.31134e-07, 0, -12, 0, 1, 0, 3, 0, -5.24537e-07, 0.605, 6, -143)
+applied_force = 0.2
+
+[node name="AcceleratorPad4" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 12, 9.5, 8.035, -196.75)
+applied_force = 0.2
+
+[node name="AcceleratorPad5" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 12, 9.5, 8.035, -211.24)
+applied_force = 0.2
+
+[node name="AcceleratorPad6" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(-1.74846e-07, 0, 12, 0, 1, 0, -4, 0, -5.24537e-07, -20.5, 14.535, -331.98)
+applied_force = 0.2
+
+[node name="AcceleratorPad7" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(-1.74846e-07, 0, 12, 0, 1, 0, -4, 0, -5.24537e-07, -102.49, 15.535, -309.98)
+applied_force = 0.2
+
+[node name="AcceleratorPad8" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(-1.74846e-07, 0.5, 10.3923, 0, 0.866025, -6, -4, -2.18557e-08, -4.54262e-07, -119.74, 15.834, -309.98)
+applied_force = 0.2
+
+[node name="AcceleratorPad9" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(-1.74846e-07, -1.27992e-16, 12, 0, 1, 9.92821e-15, -4, 0, -5.24537e-07, -131.077, 18.919, -309.98)
+applied_force = 0.2
+
+[node name="AcceleratorPad2" parent="Interactables" instance=ExtResource("5_vc5q2")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 12, -2.99852, -0.346451, -13.9976)
+applied_force = 0.2
+
+[node name="Launcher" parent="Interactables" instance=ExtResource("6_mryyq")]
+transform = Transform3D(0.697103, -0.207635, -0.686248, 0, 0.957148, -0.2896, 0.716972, 0.201881, 0.66723, 0.853419, 3.68061, -37.7783)
+velocity = 14.0
+additional_direction = Vector3(0, 6, 0)
+
+[node name="Spring" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 8, -81)
+
+[node name="Spring2" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 11, -76)
+
+[node name="Spring3" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12.5, -151)
+additional_direction = Vector3(0, 23, 0)
+
+[node name="Spring4" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5, 5.5, -325.5)
+
+[node name="Spring6" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 12, -317)
+additional_direction = Vector3(0, 33, 0)
+
+[node name="Spring5" parent="Interactables" instance=ExtResource("7_i33qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5, 11, -328)
+
+[node name="Launcher2" parent="Interactables" instance=ExtResource("6_mryyq")]
+transform = Transform3D(-4.37114e-08, -1.27992e-16, 1, 0, 1, 8.27351e-16, -1, 0, -4.37114e-08, 20, 12.5, -81)
+velocity = 12.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 3, 0)
+
+[node name="Launcher4" parent="Interactables" instance=ExtResource("6_mryyq")]
+transform = Transform3D(0.707107, 0.353553, 0.612372, -1.29048e-08, 0.866025, -0.5, -0.707107, 0.353553, 0.612372, 35, 17.5, -151)
+velocity = 18.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 9, 0)
+
+[node name="Launcher5" parent="Interactables" instance=ExtResource("6_mryyq")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 9.5, 10.587, -218.482)
+velocity = 25.0
+additional_direction = Vector3(0, 10, 0)
+
+[node name="Launcher3" parent="Interactables" instance=ExtResource("6_mryyq")]
+transform = Transform3D(0.965926, -0.12941, -0.224144, 2.23517e-08, 0.866025, -0.5, 0.258819, 0.482963, 0.836516, -24.5, 15.5, -76)
+velocity = 16.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 9, 0)
+
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_iycpa")]
 camera = NodePath("../SpringArm3D")
 
@@ -53,88 +162,8 @@ camera = NodePath("../SpringArm3D")
 player = NodePath("../CharacterBody3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 7, 0)
 
-[node name="AcceleratorPad" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 12, 23, 2, -49)
-applied_force = 0.2
-
-[node name="AcceleratorPad3" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(-1.31134e-07, 0, -12, 0, 1, 0, 3, 0, -5.24537e-07, 0.605, 6, -143)
-applied_force = 0.2
-
-[node name="AcceleratorPad4" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 12, 9.5, 8.035, -196.75)
-applied_force = 0.2
-
-[node name="AcceleratorPad5" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 12, 9.5, 8.035, -211.24)
-applied_force = 0.2
-
-[node name="AcceleratorPad6" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(-1.74846e-07, 0, 12, 0, 1, 0, -4, 0, -5.24537e-07, -20.5, 14.535, -331.98)
-applied_force = 0.2
-
-[node name="AcceleratorPad7" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(-1.74846e-07, 0, 12, 0, 1, 0, -4, 0, -5.24537e-07, -102.49, 15.535, -309.98)
-applied_force = 0.2
-
-[node name="AcceleratorPad8" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(-1.74846e-07, 0.5, 10.3923, 0, 0.866025, -6, -4, -2.18557e-08, -4.54262e-07, -119.74, 15.834, -309.98)
-applied_force = 0.2
-
-[node name="AcceleratorPad9" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(-1.74846e-07, -1.27992e-16, 12, 0, 1, 9.92821e-15, -4, 0, -5.24537e-07, -131.077, 18.919, -309.98)
-applied_force = 0.2
-
-[node name="AcceleratorPad2" parent="." instance=ExtResource("5_vc5q2")]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 12, -2.99852, -0.346451, -13.9976)
-applied_force = 0.2
-
-[node name="Launcher" parent="." instance=ExtResource("6_mryyq")]
-transform = Transform3D(0.697103, -0.207635, -0.686248, 0, 0.957148, -0.2896, 0.716972, 0.201881, 0.66723, 0.853419, 3.68061, -37.7783)
-velocity = 14.0
-additional_direction = Vector3(0, 6, 0)
-
-[node name="Spring" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 8, -81)
-
-[node name="Spring2" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 11, -76)
-
-[node name="Spring3" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12.5, -151)
-additional_direction = Vector3(0, 23, 0)
-
-[node name="Spring4" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5, 5.5, -325.5)
-
-[node name="Spring6" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 12, -317)
-additional_direction = Vector3(0, 33, 0)
-
-[node name="Spring5" parent="." instance=ExtResource("7_i33qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5, 11, -328)
-
-[node name="Launcher2" parent="." instance=ExtResource("6_mryyq")]
-transform = Transform3D(-4.37114e-08, -1.27992e-16, 1, 0, 1, 8.27351e-16, -1, 0, -4.37114e-08, 20, 12.5, -81)
-velocity = 12.0
-overwrite_velocity = true
-additional_direction = Vector3(0, 3, 0)
-
-[node name="Launcher4" parent="." instance=ExtResource("6_mryyq")]
-transform = Transform3D(0.707107, 0.353553, 0.612372, -1.29048e-08, 0.866025, -0.5, -0.707107, 0.353553, 0.612372, 35, 17.5, -151)
-velocity = 18.0
-overwrite_velocity = true
-additional_direction = Vector3(0, 9, 0)
-
-[node name="Launcher5" parent="." instance=ExtResource("6_mryyq")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 9.5, 10.587, -218.482)
-velocity = 25.0
-additional_direction = Vector3(0, 10, 0)
-
-[node name="Launcher3" parent="." instance=ExtResource("6_mryyq")]
-transform = Transform3D(0.965926, -0.12941, -0.224144, 2.23517e-08, 0.866025, -0.5, 0.258819, 0.482963, 0.836516, -24.5, 15.5, -76)
-velocity = 16.0
-overwrite_velocity = true
-additional_direction = Vector3(0, 9, 0)
+[node name="WaterPlaneMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("PlaneMesh_tg6k4")
