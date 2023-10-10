@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cxikbsb8hs10"]
+
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_4iwyn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4iwyn")
+shader_parameter/out_color = Color(0, 0.35, 1, 1)
+shader_parameter/metallic = 0.6
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.2
+shader_parameter/offsetAmount = 0.5
