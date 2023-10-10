@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6pjvbsvcv7pl"]
+[gd_scene load_steps=24 format=3 uid="uid://6pjvbsvcv7pl"]
 
 [ext_resource type="Environment" uid="uid://dqfbbn1u2jts1" path="res://post_processing/worldenv_ocean.tres" id="1_7kusb"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="3_iycpa"]
@@ -20,12 +20,17 @@
 [ext_resource type="PackedScene" uid="uid://yb1c3quvku8c" path="res://models/ocean/O_SPlatform11.glb" id="18_pkd76"]
 [ext_resource type="Material" uid="uid://cxikbsb8hs10" path="res://materials/ocean/ocean_water.tres" id="19_mt5vj"]
 [ext_resource type="PackedScene" uid="uid://c3s5x1ncctc6w" path="res://models/ocean/O_SPlatform12.glb" id="19_svoms"]
+[ext_resource type="Material" uid="uid://pjfvdacgmy86" path="res://materials/ocean/ocean_water_static.tres" id="21_gqil8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tg6k4"]
 material = ExtResource("19_mt5vj")
-size = Vector2(2000, 2000)
-subdivide_width = 300
-subdivide_depth = 300
+size = Vector2(1500, 1500)
+subdivide_width = 150
+subdivide_depth = 150
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wun0w"]
+material = ExtResource("21_gqil8")
+size = Vector2(5000, 5000)
 
 [node name="Node3D" type="Node3D"]
 
@@ -165,5 +170,9 @@ player = NodePath("../CharacterBody3D")
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 7, 0)
 
 [node name="WaterPlaneMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -176)
 mesh = SubResource("PlaneMesh_tg6k4")
+
+[node name="WaterPlaneMeshStatic" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+mesh = SubResource("PlaneMesh_wun0w")
