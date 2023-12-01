@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm5cnd7y2lvxy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8b7lt"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_8k6gx"]
+font_size = 40
+
+[node name="GameUIControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 355.0
+offset_bottom = 160.0
+
+[node name="TimeLabel" type="Label" parent="TimeVBoxContainer"]
+layout_mode = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_8b7lt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DTimerLabel" type="Label" parent="TimeVBoxContainer"]
+layout_mode = 2
+text = "0:00.00"
+label_settings = SubResource("LabelSettings_8k6gx")
+horizontal_alignment = 1
+vertical_alignment = 1
