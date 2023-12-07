@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm5cnd7y2lvxy"]
+[gd_scene load_steps=6 format=3 uid="uid://bm5cnd7y2lvxy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgprh"]
+bg_color = Color(0, 0, 0, 0.431373)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b7lt"]
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_8k6gx"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_bvmr2"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_4knsx"]
 font_size = 40
 
 [node name="GameUIControl" type="Control"]
@@ -14,23 +23,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimeVBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 355.0
-offset_bottom = 160.0
+[node name="TimePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 50.0
+offset_right = 294.0
+offset_bottom = 201.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgprh")
 
-[node name="TimeLabel" type="Label" parent="TimeVBoxContainer"]
+[node name="TimeCenterContainer" type="CenterContainer" parent="TimePanelContainer"]
+layout_mode = 2
+
+[node name="TimeVBoxContainer" type="VBoxContainer" parent="TimePanelContainer/TimeCenterContainer"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="TimePanelContainer/TimeCenterContainer/TimeVBoxContainer"]
 layout_mode = 2
 text = "Time"
 label_settings = SubResource("LabelSettings_8b7lt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DTimerLabel" type="Label" parent="TimeVBoxContainer"]
+[node name="DTimerLabel" type="Label" parent="TimePanelContainer/TimeCenterContainer/TimeVBoxContainer"]
 layout_mode = 2
-text = "0:00.00"
+text = "0:00"
 label_settings = SubResource("LabelSettings_8k6gx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollectablePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -441.0
+offset_top = 50.0
+offset_right = -80.0
+offset_bottom = 198.0
+grow_horizontal = 0
+
+[node name="ColelctableCenterContainer" type="CenterContainer" parent="CollectablePanelContainer"]
+layout_mode = 2
+
+[node name="CollectableVBoxContainer" type="VBoxContainer" parent="CollectablePanelContainer/ColelctableCenterContainer"]
+layout_mode = 2
+
+[node name="CollectableLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer"]
+layout_mode = 2
+text = "Coins (?????):"
+label_settings = SubResource("LabelSettings_bvmr2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DCollectableLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer"]
+layout_mode = 2
+text = "0 / 20"
+label_settings = SubResource("LabelSettings_4knsx")
 horizontal_alignment = 1
 vertical_alignment = 1
