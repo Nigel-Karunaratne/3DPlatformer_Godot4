@@ -68,7 +68,7 @@ func _unhandled_input(event):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	# Smooth move to Player Location
 	if player != null:
 		var distance = (player.position + offset) - position
