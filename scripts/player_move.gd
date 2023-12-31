@@ -11,6 +11,7 @@ const ACCEL_SPEED = 2.1
 const MAX_SPEED = 9
 const GRAVITY = 30
 const JUMP_VELOCITY = 12
+const DOUBLE_JUMP_VELOCITY = 10
 const ANGULAR_SPEED = TAU * 2.5
 
 const SHORT_HOP_MULTIPLIER = 0.5
@@ -23,6 +24,8 @@ var influence_velocity_decay = 0.9675
 var influence_velocity_decay_grounded = 0.75
 var on_accel_pad = false
 
+var can_double_jump: bool = true
+
 # Input Processing variables
 var _move_axis = Vector3.ZERO
 var jump_pressed = false
@@ -32,10 +35,16 @@ func _process(_delta):
 	var h = Input.get_axis("move_left", "move_right")
 	var v = Input.get_axis("move_back", "move_forward") 
 	_move_axis = Vector3(h, 0, -v).normalized() # -Z is forward
-	jump_pressed = Input.is_action_pressed("jump")
+	# jump_pressed = Input.is_action_pressed("jump")
 
 
 func _unhandled_input(event):
+	# Jump Detection
+	if Input.is_action_just_pressed("jump"):
+		jump_pressed = true
+	else:
+		jump_pressed = false
+
 	# Short Hopping
 	if Input.is_action_just_released("jump") and is_currently_jumping and velocity.y > 0:
 		velocity.y *= SHORT_HOP_MULTIPLIER 
@@ -67,15 +76,23 @@ func _physics_process(delta):
 		velocity.y -= GRAVITY * delta
 	elif is_currently_jumping: # Landed back on ground
 		is_currently_jumping = false
-	
+		can_double_jump = true
+
+
 	if is_on_floor():
-		if jump_pressed:
+		if jump_pressed and !is_currently_jumping:
 			velocity.y = JUMP_VELOCITY
 			is_currently_jumping = true
+			jump_pressed = false # so double jump doesn't trigger as well
 		# if not on_accel_pad and influence_velocity != Vector3.ZERO:
 		# 	influence_velocity = Vector3.ZERO
+	
+	if jump_pressed and not is_on_floor() and can_double_jump:
+		velocity.y = DOUBLE_JUMP_VELOCITY
+		is_currently_jumping = true
+		can_double_jump = false
 
-		
+	
 	
 	if _move_axis.length_squared() > 0:
 		# Rotate the Player
@@ -114,6 +131,7 @@ func _physics_process(delta):
 	
 	# print(Vector2(velocity.x, velocity.z).length())
 	print(influence_velocity)
+	# print(can_double_jump, "  jump_pressed: ", jump_pressed, "  is_currently_jumping: ", is_currently_jumping)
 	move_and_slide()
 
 func launch_player_spring(new_velocity: Vector3):
