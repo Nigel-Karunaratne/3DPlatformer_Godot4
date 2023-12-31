@@ -32,7 +32,7 @@ func _process(_delta):
 	var h = Input.get_axis("move_left", "move_right")
 	var v = Input.get_axis("move_back", "move_forward") 
 	_move_axis = Vector3(h, 0, -v).normalized() # -Z is forward
-	jump_pressed = Input.is_action_just_pressed("jump")
+	jump_pressed = Input.is_action_pressed("jump")
 
 
 func _unhandled_input(event):
@@ -48,6 +48,10 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	if camera != null:
 		_move_axis = _move_axis.rotated(Vector3.UP, camera.rotation.y).normalized();
+
+	##!!!! DEBUG
+	#if Input.is_action_just_pressed("jump"):
+	#	print("true : ", jump_pressed)
 
 	##!!!! DEBUG
 	if Input.is_action_just_pressed("jump") and Input.is_key_pressed(KEY_F):
