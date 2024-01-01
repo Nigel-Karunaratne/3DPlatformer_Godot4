@@ -37,14 +37,7 @@ func _process(_delta):
 	_move_axis = Vector3(h, 0, -v).normalized() # -Z is forward
 	# jump_pressed = Input.is_action_pressed("jump")
 
-
 func _unhandled_input(event):
-	# Jump Detection
-	if Input.is_action_just_pressed("jump"):
-		jump_pressed = true
-	else:
-		jump_pressed = false
-
 	# Short Hopping
 	if Input.is_action_just_released("jump") and is_currently_jumping and velocity.y > 0:
 		velocity.y *= SHORT_HOP_MULTIPLIER 
@@ -72,11 +65,20 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
+	# Jump Detection
+	if Input.is_action_just_pressed("jump"):
+		jump_pressed = true
+		print ("should be jumping...")
+	else:
+		jump_pressed = false
+
+
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 	elif is_currently_jumping: # Landed back on ground
 		is_currently_jumping = false
 		can_double_jump = true
+		print("landed. can jump again!\n")
 
 
 	if is_on_floor():
@@ -84,6 +86,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			is_currently_jumping = true
 			jump_pressed = false # so double jump doesn't trigger as well
+			print("jumping!")
 		# if not on_accel_pad and influence_velocity != Vector3.ZERO:
 		# 	influence_velocity = Vector3.ZERO
 	
@@ -91,7 +94,7 @@ func _physics_process(delta):
 		velocity.y = DOUBLE_JUMP_VELOCITY
 		is_currently_jumping = true
 		can_double_jump = false
-
+		print("double jumping!")
 	
 	
 	if _move_axis.length_squared() > 0:
@@ -130,7 +133,7 @@ func _physics_process(delta):
 		velocity.z = 0
 	
 	# print(Vector2(velocity.x, velocity.z).length())
-	print(influence_velocity)
+	# print(influence_velocity)
 	# print(can_double_jump, "  jump_pressed: ", jump_pressed, "  is_currently_jumping: ", is_currently_jumping)
 	move_and_slide()
 
