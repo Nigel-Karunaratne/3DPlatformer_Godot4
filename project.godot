@@ -77,3 +77,7 @@ reset_camera={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
 ]
 }
+
+[rendering]
+
+anti_aliasing/quality/screen_space_aa=1
