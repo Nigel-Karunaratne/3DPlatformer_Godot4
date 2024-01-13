@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="1_23t0m"]
 
-[node name="SpringArm3D" type="SpringArm3D"]
+[node name="CameraSpringArm3D" type="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
 spring_length = 6.5
 margin = 0.25
 script = ExtResource("1_23t0m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+fov = 80.0

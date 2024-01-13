@@ -22,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TimePanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -70,14 +71,32 @@ layout_mode = 2
 
 [node name="CollectableLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer"]
 layout_mode = 2
-text = "Coins (?????):"
+text = "Tokens"
 label_settings = SubResource("LabelSettings_bvmr2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DCollectableLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer"]
 layout_mode = 2
-text = "0 / 20"
+alignment = 1
+
+[node name="DCollectableCurrentLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4knsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollectableSlashLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_4knsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DCollectableTotalLabel" type="Label" parent="CollectablePanelContainer/ColelctableCenterContainer/CollectableVBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "20"
 label_settings = SubResource("LabelSettings_4knsx")
 horizontal_alignment = 1
 vertical_alignment = 1

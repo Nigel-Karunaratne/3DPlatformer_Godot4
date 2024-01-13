@@ -55,6 +55,13 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("jump"):
 	#	print("true : ", jump_pressed)
 
+	# Jump Detection
+	if Input.is_action_just_pressed("jump"):
+		jump_pressed = true
+		print ("should be jumping...")
+	else:
+		jump_pressed = false
+
 	##!!!! DEBUG
 	if Input.is_action_just_pressed("jump") and Input.is_key_pressed(KEY_F):
 		_fly = !_fly
@@ -64,14 +71,6 @@ func _physics_process(delta):
 		velocity.z = _move_axis.z * ACCEL_SPEED * 20
 		move_and_slide()
 		return
-
-	# Jump Detection
-	if Input.is_action_just_pressed("jump"):
-		jump_pressed = true
-		print ("should be jumping...")
-	else:
-		jump_pressed = false
-
 
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta

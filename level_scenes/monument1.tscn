@@ -1,0 +1,660 @@
+[gd_scene load_steps=23 format=3 uid="uid://c4gnsdnhs7sou"]
+
+[ext_resource type="PackedScene" uid="uid://dtasqdlailihb" path="res://prefab_scenes/game_manager_node.tscn" id="1_h8apo"]
+[ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
+[ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="2_u2qu1"]
+[ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
+[ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
+[ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
+[ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_o5yom"]
+[ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
+[ext_resource type="PackedScene" uid="uid://lythk1cmkyct" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
+[ext_resource type="PackedScene" uid="uid://dcpspl0xn5env" path="res://models/monument/w1-MediumPlatform1.glb" id="9_4hl00"]
+[ext_resource type="PackedScene" uid="uid://bmok1hpwc1ymm" path="res://models/monument/w1-SmallPlatform1.glb" id="9_t8e4c"]
+[ext_resource type="PackedScene" uid="uid://di5mqsad2slai" path="res://models/monument/w1-SmallPlatform3.glb" id="10_qhacn"]
+[ext_resource type="PackedScene" uid="uid://birk5gk7p12of" path="res://models/monument/w1-Special1.glb" id="12_ia7jv"]
+[ext_resource type="PackedScene" uid="uid://edvaxo3n5kgj" path="res://models/monument/w1-SmallPlatform6x6R.glb" id="13_80b35"]
+[ext_resource type="PackedScene" uid="uid://dg5uyj20nlmx8" path="res://models/monument/w1-Pillar.glb" id="14_0p67n"]
+[ext_resource type="PackedScene" uid="uid://w8r4cfxe4s68" path="res://models/monument/w1-SmallPlatform6x6.glb" id="15_x8rrn"]
+[ext_resource type="PackedScene" uid="uid://drq2q0y2jtqad" path="res://models/monument/w1-LargePlatform2R.glb" id="16_mewhf"]
+[ext_resource type="PackedScene" uid="uid://8403utodg4el" path="res://models/monument/w1-SmallPlatform2.glb" id="17_yw0xs"]
+[ext_resource type="PackedScene" uid="uid://bn4guy6trv6wk" path="res://models/monument/w1-LargePlatform3R.glb" id="18_x5xv8"]
+[ext_resource type="PackedScene" uid="uid://i3xl2avmnfh" path="res://prefab_scenes/collectable_node_3d.tscn" id="20_opsjm"]
+[ext_resource type="PackedScene" uid="uid://bm5cnd7y2lvxy" path="res://ui_controls/game_ui_control.tscn" id="21_s71o2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
+size = Vector2(1000, 1000)
+subdivide_width = 200
+subdivide_depth = 200
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GameManagerNode" parent="." node_paths=PackedStringArray("game_ui") instance=ExtResource("1_h8apo")]
+level_collectable_count = 1
+game_ui = NodePath("../GameUIControl")
+
+[node name="CollectableNode3D" parent="." instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+visible = false
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+size = Vector3(14, 1, 18)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -19)
+size = Vector3(7, 1, 13)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -32.5)
+size = Vector3(4, 1, 8)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -43.5)
+size = Vector3(9, 2, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -49.5)
+size = Vector3(6, 2, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.5, -54)
+size = Vector3(5, 2, 5)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0.5, -62)
+size = Vector3(13, 2, 8)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.5, -62)
+size = Vector3(18, 2, 8)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 10, -104)
+size = Vector3(18, 24, 25)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0.5, -70.5)
+size = Vector3(10, 2, 9)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 5.5, -80)
+size = Vector3(6, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 11.5, -80)
+size = Vector3(6, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 11.5, -86.5)
+size = Vector3(6, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 18.5, -97)
+size = Vector3(6, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 34.5, 18, -132.5)
+size = Vector3(6, 1, 28)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 13.5, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 13.5, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10.5, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 16, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 15.5, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 37, -158)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 35.5, -165)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 38, -157)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 33, -124.5)
+size = Vector3(13, 5, 52)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5, 29, -61.5)
+size = Vector3(13, 5, 39)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.5, 17, -47)
+size = Vector3(21, 5, 9)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 31, -47)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 22.5, -47)
+size = Vector3(6, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 19, -37.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 20.5, -30.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 18.5, -23)
+size = Vector3(4, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 17, -15)
+size = Vector3(4, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 34, 12)
+size = Vector3(17, 5, 19)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 17, -5)
+size = Vector3(4, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 8.5, -62)
+size = Vector3(11, 2, 8)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 1.5, -92)
+size = Vector3(11, 9, 8)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 0.5, -62)
+size = Vector3(9, 2, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5, 2, -67.5)
+size = Vector3(7, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 3, -76.5)
+size = Vector3(7, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 4, -87)
+size = Vector3(7, 1, 7)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 4, -95)
+size = Vector3(6, 1, 4)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 6.5, -91)
+size = Vector3(4, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 6.5, -82)
+size = Vector3(4, 1, 6)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 8, -72.5)
+size = Vector3(6, 1, 5)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 9, -62.5)
+size = Vector3(6, 1, 5)
+material = ExtResource("1_o3tyx")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 4.5, -65.5)
+size = Vector3(8, 6, 1)
+material = ExtResource("1_o3tyx")
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_u2qu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+camera = NodePath("../CameraSpringArm3D")
+
+[node name="CameraSpringArm3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_vs4iy")]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+player = NodePath("../CharacterBody3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, -0.433013, 0.5, 0.433013, 0.75, 0, -0.866025, 0.5, 0, 6, 0)
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Launcher" parent="Interactables" instance=ExtResource("4_6j2ia")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 17, -62.5)
+velocity = 18.0
+overwrite_velocity = true
+additional_direction = Vector3(0, 2, 0)
+
+[node name="Spring" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9.5, -62.5)
+additional_direction = Vector3(0, 25, 0)
+
+[node name="Spring7" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 17.5, -5)
+additional_direction = Vector3(0, 40, 0)
+
+[node name="Spring2" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 1.5, -73.5)
+additional_direction = Vector3(0, 19, 0)
+
+[node name="Spring3" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 6, -80)
+additional_direction = Vector3(0, 19, 0)
+
+[node name="Spring4" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 12, -89)
+additional_direction = Vector3(0, 27, 0)
+
+[node name="Spring5" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 11, -158)
+additional_direction = Vector3(0, 27, 0)
+
+[node name="Spring6" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 16, -158)
+additional_direction = Vector3(0, 38, 0)
+
+[node name="AcceleratorPad" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -66.5, 35.5, -141)
+applied_force = 0.2
+
+[node name="AcceleratorPad2" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -71, 35.5, -126)
+applied_force = 0.2
+
+[node name="AcceleratorPad3" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -75, 35.5, -109)
+applied_force = 0.2
+
+[node name="AcceleratorPad4" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -71, 35.5, -87.5)
+applied_force = 0.2
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8u2ux")
+surface_material_override/0 = ExtResource("7_58vyd")
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="w1-LargePlatform" parent="LevelGeometry" instance=ExtResource("8_pj8mo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -3.5)
+
+[node name="w1-MediumPlatform1" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, -19.5)
+
+[node name="w1-SmallPlatform3" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -32.5)
+
+[node name="w1-SmallPlatform1" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0.5, -43.5)
+
+[node name="w1-SmallPlatform4" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -50.5)
+
+[node name="w1-SmallPlatform5" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.5, 0.5, -59)
+
+[node name="w1-Special1" parent="LevelGeometry" instance=ExtResource("12_ia7jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -59)
+
+[node name="w1-SmallPlatform6x6R" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.5, -62.5)
+
+[node name="w1-SmallPlatform6" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -31, 0, -62.5)
+
+[node name="w1-SmallPlatform6x6R2" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5, 1.5, -67.5)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R2" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-SmallPlatform6x6R3" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 2.5, -76.5)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R3" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-SmallPlatform6x6R5" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 6.5, -82)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R5" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-SmallPlatform6x6R6" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 5, -80)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R6" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-SmallPlatform6x6R7" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 11, -80)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R7" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R7" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-SmallPlatform6x6R8" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 18, -96.5)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R8" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R8" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x6R8" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-SmallPlatform6x6R9" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 13, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R9" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R9" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-SmallPlatform6x6R10" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 13, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R10" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R10" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-SmallPlatform6x6R11" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 36.5, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x6R11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-Pillar4" parent="LevelGeometry/w1-SmallPlatform6x6R11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 0)
+
+[node name="w1-Pillar5" parent="LevelGeometry/w1-SmallPlatform6x6R11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41, 0)
+
+[node name="w1-SmallPlatform6x6R12" parent="LevelGeometry" instance=ExtResource("13_80b35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.5, 15, -17)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6R12" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x6R12" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+
+[node name="w1-SmallPlatform7" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39, 3.5, -95)
+
+[node name="w1-SmallPlatform6x6" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 8.5, -73)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x6" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-SmallPlatform6x10" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x10" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-SmallPlatform6x11" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 35, -165)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-Pillar4" parent="LevelGeometry/w1-SmallPlatform6x11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 0)
+
+[node name="w1-Pillar5" parent="LevelGeometry/w1-SmallPlatform6x11" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41, 0)
+
+[node name="w1-SmallPlatform6x14" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 30.5, -47)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x14" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x14" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x14" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-Pillar4" parent="LevelGeometry/w1-SmallPlatform6x14" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 0)
+
+[node name="w1-SmallPlatform6x15" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 22, -47)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x15" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x15" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x15" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-SmallPlatform6x16" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.5, 18, -36.5)
+
+[node name="w1-SmallPlatform6x18" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 18, -23)
+
+[node name="w1-SmallPlatform6x19" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 16.5, -5)
+
+[node name="w1-SmallPlatform6x13" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 37.5, -157)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x13" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x13" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-Pillar3" parent="LevelGeometry/w1-SmallPlatform6x13" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+
+[node name="w1-Pillar4" parent="LevelGeometry/w1-SmallPlatform6x13" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 0)
+
+[node name="w1-Pillar5" parent="LevelGeometry/w1-SmallPlatform6x13" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41, 0)
+
+[node name="w1-SmallPlatform6x12" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 15, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x12" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x12" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-SmallPlatform6x17" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 15.5, -158)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x17" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x17" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-SmallPlatform6x8" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 11, -87)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x8" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x8" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-SmallPlatform6x9" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 10, -78.5)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x9" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
+
+[node name="w1-Pillar2" parent="LevelGeometry/w1-SmallPlatform6x9" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
+
+[node name="w1-SmallPlatform6x7" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 3.5, -87)
+
+[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x7" instance=ExtResource("14_0p67n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="w1-LargePlatform2R" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2, -92)
+
+[node name="w1-MediumPlatform2" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33, 0.5, -62)
+
+[node name="w1-SmallPlatform8" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0.5, -62)
+
+[node name="w1-SmallPlatform2" parent="LevelGeometry" instance=ExtResource("17_yw0xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0.5, -72)
+
+[node name="w1-LargePlatform3R" parent="LevelGeometry" instance=ExtResource("18_x5xv8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 10, -104)
+
+[node name="w1-MediumPlatform3" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 34, 19.1883, -125.761)
+
+[node name="w1-MediumPlatform4" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 34, 15.5648, -139.284)
+
+[node name="w1-MediumPlatform5" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 34.5, -143.5)
+
+[node name="w1-MediumPlatform6" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 34.5, -129.5)
+
+[node name="w1-MediumPlatform7" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 34.5, -115.5)
+
+[node name="w1-MediumPlatform8" parent="LevelGeometry" instance=ExtResource("9_4hl00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 34.5, -101.5)
+
+[node name="w1-SmallPlatform9" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -146.5)
+
+[node name="w1-SmallPlatform10" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -138.5)
+
+[node name="w1-SmallPlatform11" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -130.5)
+
+[node name="w1-SmallPlatform12" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -122.5)
+
+[node name="w1-SmallPlatform13" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -114.5)
+
+[node name="w1-SmallPlatform14" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -106.5)
+
+[node name="w1-SmallPlatform15" parent="LevelGeometry" instance=ExtResource("9_t8e4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 34.5, -98.5)
+
+[node name="w1-LargePlatform2R2" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -71, 27.5, -72.5)
+
+[node name="w1-LargePlatform2R3" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -71, 27.5, -60.5)
+
+[node name="w1-LargePlatform2R4" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -71, 27.5, -48.5)
+
+[node name="w1-LargePlatform2R5" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 15.5, -47.5)
+
+[node name="w1-LargePlatform2R6" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 15.5, -47.5)
+
+[node name="w1-LargePlatform2" parent="LevelGeometry" instance=ExtResource("8_pj8mo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 35.5, 11.5)
+
+[node name="GameUIControl" parent="." instance=ExtResource("21_s71o2")]
