@@ -1,21 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://klut8o1nqtbs"]
+[gd_scene load_steps=5 format=3 uid="uid://klut8o1nqtbs"]
 
 [ext_resource type="Script" path="res://scripts/launcher_controller.gd" id="1_7wgnt"]
+[ext_resource type="PackedScene" uid="uid://bmr5qxg1xbrsa" path="res://models/launcher.glb" id="2_kk5nk"]
+[ext_resource type="Script" path="res://scripts/launcher_rotation.gd" id="3_s7kqk"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xlans"]
-radius = 0.7
-
-[sub_resource type="TorusMesh" id="TorusMesh_kw878"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ieaj2"]
+height = 0.602973
+radius = 1.16301
 
 [node name="Launcher" type="Area3D"]
 script = ExtResource("1_7wgnt")
 velocity = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_xlans")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ieaj2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("TorusMesh_kw878")
+[node name="launcher" parent="." instance=ExtResource("2_kk5nk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_s7kqk")
+rotation_speed = 0.5
+rotation_axis = Vector3(1, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
