@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkgh5msxbxchf"]
+[gd_scene load_steps=8 format=3 uid="uid://bkgh5msxbxchf"]
 
 [ext_resource type="Material" uid="uid://dpyeam2jao1pc" path="res://materials/m_grid_citron.tres" id="1_263v4"]
 [ext_resource type="Material" uid="uid://dpm03fq4x77bb" path="res://materials/m_grid_cafeaulait.tres" id="2_bxpuc"]
@@ -7,23 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="4_0ydjt"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="4_suwvw"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_aic7r"]
-[ext_resource type="PackedScene" uid="uid://b4b8g4lmicwxw" path="res://models/ocean/O_SPlatform1.glb" id="8_jjryp"]
-[ext_resource type="PackedScene" uid="uid://cwtt7v8amlfqg" path="res://models/ocean/O_SPlatform2.glb" id="9_jpuv6"]
-[ext_resource type="PackedScene" uid="uid://cjneckmjtheaf" path="res://models/ocean/O_SPlatform3.glb" id="10_s2xu6"]
-[ext_resource type="PackedScene" uid="uid://jutk1f1ygchw" path="res://models/ocean/O_SPlatform4.glb" id="11_2dsf0"]
-[ext_resource type="PackedScene" uid="uid://chwvvv3d4cnrm" path="res://models/ocean/O_SPlatform5.glb" id="12_72jc8"]
-[ext_resource type="PackedScene" uid="uid://cp4i2i66rpumh" path="res://models/ocean/O_SPlatform6.glb" id="13_q44mq"]
-[ext_resource type="PackedScene" uid="uid://blpjtdov4rsrc" path="res://models/ocean/O_SPlatform7.glb" id="14_c0j83"]
-[ext_resource type="PackedScene" uid="uid://udlo7qpq67ck" path="res://models/ocean/O_SPlatform8.glb" id="15_83as1"]
-[ext_resource type="PackedScene" uid="uid://0powgvsev7wh" path="res://models/ocean/O_SPlatform9.glb" id="16_joaiu"]
-[ext_resource type="PackedScene" uid="uid://b6huiyp157q1c" path="res://models/ocean/O_SPlatform10.glb" id="17_wlmmy"]
-[ext_resource type="PackedScene" uid="uid://yb1c3quvku8c" path="res://models/ocean/O_SPlatform11.glb" id="18_e3jrg"]
-[ext_resource type="PackedScene" uid="uid://c3s5x1ncctc6w" path="res://models/ocean/O_SPlatform12.glb" id="19_q7xhq"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -389,29 +376,3 @@ transform = Transform3D(0.965926, -0.12941, -0.224144, 2.23517e-08, 0.866025, -0
 velocity = 16.0
 overwrite_velocity = true
 additional_direction = Vector3(0, 9, 0)
-
-[node name="LevelGeometry" type="Node3D" parent="."]
-
-[node name="O_SPlatform1" parent="LevelGeometry" instance=ExtResource("8_jjryp")]
-
-[node name="O_SPlatform2" parent="LevelGeometry" instance=ExtResource("9_jpuv6")]
-
-[node name="O_SPlatform3" parent="LevelGeometry" instance=ExtResource("10_s2xu6")]
-
-[node name="O_SPlatform4" parent="LevelGeometry" instance=ExtResource("11_2dsf0")]
-
-[node name="O_SPlatform5" parent="LevelGeometry" instance=ExtResource("12_72jc8")]
-
-[node name="O_SPlatform6" parent="LevelGeometry" instance=ExtResource("13_q44mq")]
-
-[node name="O_SPlatform7" parent="LevelGeometry" instance=ExtResource("14_c0j83")]
-
-[node name="O_SPlatform8" parent="LevelGeometry" instance=ExtResource("15_83as1")]
-
-[node name="O_SPlatform9" parent="LevelGeometry" instance=ExtResource("16_joaiu")]
-
-[node name="O_SPlatform10" parent="LevelGeometry" instance=ExtResource("17_wlmmy")]
-
-[node name="O_SPlatform11" parent="LevelGeometry" instance=ExtResource("18_e3jrg")]
-
-[node name="O_SPlatform12" parent="LevelGeometry" instance=ExtResource("19_q7xhq")]
