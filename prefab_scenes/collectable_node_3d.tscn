@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://i3xl2avmnfh"]
+[gd_scene load_steps=6 format=3 uid="uid://i3xl2avmnfh"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_sa118"]
+[ext_resource type="PackedScene" uid="uid://f42h471anukb" path="res://models/token.glb" id="2_c2gtk"]
+[ext_resource type="Script" path="res://scripts/constant_rotation.gd" id="3_cwtey"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ogg3k"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -11,11 +13,17 @@ size = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("1_sa118")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PrismMesh_ogg3k")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_4etsf")
+
+[node name="token" parent="." instance=ExtResource("2_c2gtk")]
+script = ExtResource("3_cwtey")
+rotation_speed = 0.5
+rotation_axis = Vector3(0.25, 1, 0.15)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

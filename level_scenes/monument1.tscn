@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="2_u2qu1"]
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
-[ext_resource type="PackedScene" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
+[ext_resource type="PackedScene" uid="uid://c7e2p8vwgm6gw" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_o5yom"]
 [ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
@@ -30,11 +30,8 @@ subdivide_depth = 200
 [node name="Node3D" type="Node3D"]
 
 [node name="GameManagerNode" parent="." node_paths=PackedStringArray("game_ui") instance=ExtResource("1_h8apo")]
-level_collectable_count = 1
+level_collectable_count = 32
 game_ui = NodePath("../GameUIControl")
-
-[node name="CollectableNode3D" parent="." instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 visible = false
@@ -330,6 +327,104 @@ applied_force = 0.2
 [node name="AcceleratorPad4" parent="Interactables" instance=ExtResource("6_o5yom")]
 transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -71, 35.5, -87.5)
 applied_force = 0.2
+
+[node name="Collectables" type="Node3D" parent="."]
+
+[node name="CollectableNode3D3" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -17.5)
+
+[node name="CollectableNode3D4" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -19)
+
+[node name="CollectableNode3D5" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -20.5)
+
+[node name="CollectableNode3D7" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -32.5)
+
+[node name="CollectableNode3D8" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -34)
+
+[node name="CollectableNode3D9" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -42)
+
+[node name="CollectableNode3D10" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -45.5)
+
+[node name="CollectableNode3D11" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, -42)
+
+[node name="CollectableNode3D12" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, -45.5)
+
+[node name="CollectableNode3D13" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -50)
+
+[node name="CollectableNode3D15" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, -58.5)
+
+[node name="CollectableNode3D17" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 2, -62)
+
+[node name="CollectableNode3D18" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 2, -64)
+
+[node name="CollectableNode3D19" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 4.5, -76.5)
+
+[node name="CollectableNode3D20" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 5.5, -87)
+
+[node name="CollectableNode3D21" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 5.5, -95)
+
+[node name="CollectableNode3D22" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 5.5, -95)
+
+[node name="CollectableNode3D23" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 5.5, -95)
+
+[node name="CollectableNode3D24" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 8.5, -82)
+
+[node name="CollectableNode3D25" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 10.5, -73)
+
+[node name="CollectableNode3D26" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 10.5, -62)
+
+[node name="CollectableNode3D27" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 10.5, -62)
+
+[node name="CollectableNode3D28" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 10.5, -62)
+
+[node name="CollectableNode3D29" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 2.5, -62)
+
+[node name="CollectableNode3D30" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.5, -62)
+
+[node name="CollectableNode3D31" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 2.5, -62)
+
+[node name="CollectableNode3D32" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 2.5, -70)
+
+[node name="CollectableNode3D33" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 2.5, -71.5)
+
+[node name="CollectableNode3D34" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 13, -80)
+
+[node name="CollectableNode3D35" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 12, -78.5)
+
+[node name="CollectableNode3D36" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 20, -96.5)
+
+[node name="CollectableNode3D16" parent="Collectables" instance=ExtResource("20_opsjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -59.5)
 
 [node name="WaterPlane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_8u2ux")
