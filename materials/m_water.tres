@@ -5,4 +5,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_r1p6o")
-shader_parameter/BaseAlbedo = Color(0.380392, 0.431373, 0.435294, 1)
+shader_parameter/BaseAlbedo = Color(9e-06, 0.462072, 0.603575, 1)
