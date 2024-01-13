@@ -23,9 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://bm5cnd7y2lvxy" path="res://ui_controls/game_ui_control.tscn" id="21_s71o2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
-size = Vector2(1000, 1000)
-subdivide_width = 200
-subdivide_depth = 200
+size = Vector2(3000, 3000)
+subdivide_width = 1
+subdivide_depth = 1
 
 [node name="Node3D" type="Node3D"]
 
@@ -288,6 +288,9 @@ additional_direction = Vector3(0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9.5, -62.5)
 additional_direction = Vector3(0, 25, 0)
 
+[node name="Spring8" parent="Interactables" instance=ExtResource("5_p8m6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 1.5, -95)
+
 [node name="Spring7" parent="Interactables" instance=ExtResource("5_p8m6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 17.5, -5)
 additional_direction = Vector3(0, 40, 0)
@@ -340,10 +343,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -20.5)
 
 [node name="CollectableNode3D7" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -32.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -32.5)
 
 [node name="CollectableNode3D8" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -34)
 
 [node name="CollectableNode3D9" parent="Collectables" instance=ExtResource("20_opsjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -42)
@@ -373,16 +376,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 2, -64)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 4.5, -76.5)
 
 [node name="CollectableNode3D20" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 5.5, -87)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 3, -87)
 
 [node name="CollectableNode3D21" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 5.5, -95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 6.5, -95)
 
 [node name="CollectableNode3D22" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 5.5, -95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 5, -95)
 
 [node name="CollectableNode3D23" parent="Collectables" instance=ExtResource("20_opsjm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 5.5, -95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 3.5, -95)
 
 [node name="CollectableNode3D24" parent="Collectables" instance=ExtResource("20_opsjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 8.5, -82)
@@ -427,6 +430,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 20, -96.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -59.5)
 
 [node name="WaterPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("PlaneMesh_8u2ux")
 surface_material_override/0 = ExtResource("7_58vyd")
 
@@ -550,7 +554,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
 
 [node name="w1-SmallPlatform7" parent="LevelGeometry" instance=ExtResource("10_qhacn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39, 3.5, -95)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39, 0.5, -95)
 
 [node name="w1-SmallPlatform6x6" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 8.5, -73)
@@ -673,10 +677,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -9, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -17, 0)
 
 [node name="w1-SmallPlatform6x7" parent="LevelGeometry" instance=ExtResource("15_x8rrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 3.5, -87)
-
-[node name="w1-Pillar" parent="LevelGeometry/w1-SmallPlatform6x7" instance=ExtResource("14_0p67n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 1, -87)
 
 [node name="w1-LargePlatform2R" parent="LevelGeometry" instance=ExtResource("16_mewhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2, -92)
