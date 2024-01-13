@@ -8,6 +8,7 @@
 
 [node name="Spring" type="Area3D"]
 script = ExtResource("1_ul8v4")
+launcher_type = 1
 velocity = 0.0
 overwrite_velocity = true
 direction = 1
