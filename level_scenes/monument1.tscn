@@ -38,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 visible = false
-use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
@@ -275,7 +274,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 camera = NodePath("../CameraSpringArm3D")
 
 [node name="CameraSpringArm3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_vs4iy")]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
 player = NodePath("../CharacterBody3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
