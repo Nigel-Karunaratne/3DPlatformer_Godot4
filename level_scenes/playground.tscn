@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6p7b17hf6wiu"]
+
+[ext_resource type="Material" uid="uid://dpyeam2jao1pc" path="res://materials/m_grid_citron.tres" id="1_dlvqk"]
+[ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="2_uj12o"]
+[ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vmm4m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(10, 1, 10)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -12)
+size = Vector3(3, 1, 4)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -16)
+size = Vector3(3, 1, 4)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
+size = Vector3(3, 1, 3)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 2)
+size = Vector3(3, 4, 2)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, 4)
+size = Vector3(3, 5, 2)
+material = ExtResource("1_dlvqk")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1, -4)
+size = Vector3(3, 3, 2)
+material = ExtResource("1_dlvqk")
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_uj12o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157354, 1.00337, 0.580197)
+camera = NodePath("../SpringArm3D")
+
+[node name="SpringArm3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_vmm4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9509, 0, -0.524726)
+player = NodePath("../CharacterBody3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.807774, 0.165461, 0.565795, -0.589492, 0.226729, 0.775302, 0, -0.9598, 0.280684, 0, 4.9057, 0)
