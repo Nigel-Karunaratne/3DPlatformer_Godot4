@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="1_r1r6b"]
 [ext_resource type="Material" uid="uid://dpm03fq4x77bb" path="res://materials/m_grid_cafeaulait.tres" id="3_0rfjg"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="4_oyh3i"]
-[ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="5_7k8gs"]
+[ext_resource type="PackedScene" path="res://prefab_scenes/launcher.tscn" id="5_7k8gs"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_u3ngf"]
 [ext_resource type="PackedScene" uid="uid://b7r4lht586kmd" path="res://prefab_scenes/moving_platform.tscn" id="7_0j5ta"]
 

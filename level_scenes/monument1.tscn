@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="2_u2qu1"]
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
-[ext_resource type="PackedScene" uid="uid://klut8o1nqtbs" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
+[ext_resource type="PackedScene" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_o5yom"]
 [ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
