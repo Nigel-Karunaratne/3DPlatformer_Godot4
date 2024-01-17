@@ -1,3 +1,4 @@
+class_name PlayerCamera
 extends SpringArm3D
 
 #TODO - Add Bounds for vertical rotation

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4gnsdnhs7sou"]
+[gd_scene load_steps=24 format=3 uid="uid://c4gnsdnhs7sou"]
 
 [ext_resource type="PackedScene" uid="uid://dtasqdlailihb" path="res://prefab_scenes/game_manager_node.tscn" id="1_h8apo"]
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
 [ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_o5yom"]
 [ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
-[ext_resource type="PackedScene" uid="uid://lythk1cmkyct" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
+[ext_resource type="PackedScene" uid="uid://d2yg1vftlowe1" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
 [ext_resource type="PackedScene" uid="uid://dcpspl0xn5env" path="res://models/monument/w1-MediumPlatform1.glb" id="9_4hl00"]
 [ext_resource type="PackedScene" uid="uid://bmok1hpwc1ymm" path="res://models/monument/w1-SmallPlatform1.glb" id="9_t8e4c"]
 [ext_resource type="PackedScene" uid="uid://di5mqsad2slai" path="res://models/monument/w1-SmallPlatform3.glb" id="10_qhacn"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bn4guy6trv6wk" path="res://models/monument/w1-LargePlatform3R.glb" id="18_x5xv8"]
 [ext_resource type="PackedScene" uid="uid://i3xl2avmnfh" path="res://prefab_scenes/collectable_node_3d.tscn" id="20_opsjm"]
 [ext_resource type="PackedScene" uid="uid://bm5cnd7y2lvxy" path="res://ui_controls/game_ui_control.tscn" id="21_s71o2"]
+[ext_resource type="PackedScene" uid="uid://dkqa0tpeg1pg7" path="res://prefab_scenes/checkpoint.tscn" id="22_pej11"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
 size = Vector2(3000, 3000)
@@ -29,9 +30,13 @@ subdivide_depth = 1
 
 [node name="Node3D" type="Node3D"]
 
-[node name="GameManagerNode" parent="." node_paths=PackedStringArray("game_ui") instance=ExtResource("1_h8apo")]
+[node name="GameManagerNode" parent="." node_paths=PackedStringArray("checkpoints", "current_checkpoint", "game_ui", "player_ref", "camera_ref") instance=ExtResource("1_h8apo")]
+checkpoints = [NodePath("../CheckpointNode3D"), NodePath("../CheckpointNode3D2"), NodePath("../CheckpointNode3D3"), NodePath("../CheckpointNode3D4")]
+current_checkpoint = NodePath("../CheckpointNode3D")
 level_collectable_count = 32
 game_ui = NodePath("../GameUIControl")
+player_ref = NodePath("../CharacterBody3D")
+camera_ref = NodePath("../CameraSpringArm3D")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 visible = false
@@ -752,3 +757,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 15.5, -47.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 35.5, 11.5)
 
 [node name="GameUIControl" parent="." instance=ExtResource("21_s71o2")]
+
+[node name="CheckpointNode3D" parent="." instance=ExtResource("22_pej11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.02379, 0)
+is_level_start = true
+
+[node name="CheckpointNode3D2" parent="." instance=ExtResource("22_pej11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62583, -5.65055)
+
+[node name="CheckpointNode3D3" parent="." instance=ExtResource("22_pej11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62583, -12.6624)
+
+[node name="CheckpointNode3D4" parent="." instance=ExtResource("22_pej11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.648982, 2.65146, -29.335)
