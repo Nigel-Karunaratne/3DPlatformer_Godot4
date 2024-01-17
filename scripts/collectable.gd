@@ -8,10 +8,10 @@ func _on_area_3d_body_entered(body):
 		
 		# TODO - find a better way PLEASE
 		gm = get_tree().get_root().get_child(0).find_child("GameManagerNode")
-		gm.increment_collectable_count()
+		gm.increment_collectable_count(self)
 		
 		# TODO - Play Sound
 		# TODO - Delete Collectable (and particle effect?)
-		queue_free()
+		#queue_free()
 	else:
 		return

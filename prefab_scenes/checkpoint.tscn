@@ -19,3 +19,5 @@ mesh = SubResource("BoxMesh_phj6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_f2cfa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

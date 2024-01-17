@@ -1,6 +1,8 @@
 class_name GameManager
 extends Node
 
+signal restarting_level
+
 # Timer Variables
 @onready var one_second_timer : Timer = get_child(0) as Timer
 # can pause timer when game is paused, unpause when game is unpaused.
@@ -15,6 +17,8 @@ const time_format_str = "%d:%02d"
 
 # Collectable Variables
 var current_collectable_count : int = 0
+var collectables_since_last_checkpoint : Array[Collectable]
+var collectable_count_at_chp : int = 0
 @export var level_collectable_count : int = -1
 
 # UI Variables
@@ -35,14 +39,6 @@ func _ready():
 	d_timer_label = game_ui.find_child("DTimerLabel", true)
 	d_collectable_current_label.text = str(0)
 	game_ui.find_child("DCollectableTotalLabel", true).text = str(level_collectable_count)
-	
-	# Checkpoints
-	for chp in checkpoints:
-		print(chp.body_entered.get_connections())
-		print("CONNECTING!", chp)
-		chp.body_entered.connect(on_checkpoint_enter)
-		if chp.is_level_start:
-			current_checkpoint = chp
 	
 	# TODO - Need to initalize variables? After then, start timer
 	# NOT collectables though - those are a seperate script 
@@ -65,18 +61,29 @@ func on_timer_tick():
 func get_elapsed_time():
 	return tmin * 60 + tsec
 
-func increment_collectable_count():
+func increment_collectable_count(col : Collectable):
 	current_collectable_count += 1
+	
+	collectables_since_last_checkpoint.append(col)
+	col.visible = false
+	col.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	
 	d_collectable_current_label.text = str(current_collectable_count)
 	
-func on_checkpoint_enter(body : Node3D):
-	print("ENTERED CHECPOINT")
-	if body is PlayerMove:
-		pass
+func on_checkpoint_enter(chp : Checkpoint):
+	current_checkpoint = chp
+	collectable_count_at_chp = current_collectable_count
+	collectables_since_last_checkpoint.clear()
 	return
 	
 func restart_from_checkpoint():
+	emit_signal("restarting_level")
 	player_ref.position = current_checkpoint.position
+	for col in collectables_since_last_checkpoint:
+		col.visible = true
+		col.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+	current_collectable_count = collectable_count_at_chp
+	d_collectable_current_label.text = str(current_collectable_count)
 	pass
 	
 func _input(event):
