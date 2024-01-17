@@ -22,5 +22,7 @@ func _run():
 		gm.checkpoints.append((chp as Checkpoint))
 		if (chp as Checkpoint).is_level_start:
 			gm.current_checkpoint = (chp as Checkpoint)
+			(chp as Node3D).position = (gm as GameManager).player_ref.position
+			print("Moving a checkpoint with 'is_level_start' to player_ref's current location")
 	
-	print("Ended. Found ", checkpoints.size(), " checkpoints. The Game Manager has been updated, and each checkpoint has been connected.")
+	print("Ended. Found ", checkpoints.size(), " checkpoints. The Game Manager has been updated.")
