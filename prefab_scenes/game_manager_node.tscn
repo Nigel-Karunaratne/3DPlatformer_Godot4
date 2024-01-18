@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_d8cf5"]
 
-[node name="GameManagerNode" type="Node" node_paths=PackedStringArray("checkpoints")]
+[node name="GameManagerNode" type="Node"]
 script = ExtResource("1_d8cf5")
-checkpoints = []
 
 [node name="OneSecondTimer" type="Timer" parent="."]
+
+[node name="DeathResetTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
 
 [connection signal="timeout" from="OneSecondTimer" to="." method="on_timer_tick"]

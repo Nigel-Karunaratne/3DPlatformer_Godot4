@@ -25,6 +25,7 @@ var collectable_count_at_chp : int = 0
 @export var game_ui : Control
 var d_collectable_current_label : Control
 var d_timer_label : Control
+@export var death_ui : DeathUIControl
 
 # Player Reference Variables
 @export var player_ref : PlayerMove
@@ -89,4 +90,31 @@ func restart_from_checkpoint():
 func _input(event):
 	if event is InputEventMouseButton:
 		print("mouse button event at ", event.position)
-		restart_from_checkpoint()
+		player_die()
+		
+func player_die():
+	# Stop Timers
+	one_second_timer.paused = true
+	
+	# TODO : Play Player Death Anim?
+	
+	# Fade Out Anim
+	death_ui.animation_player.play("death_fade_in")
+	await death_ui.animation_player.animation_finished
+	
+	# call RestartFromCheckpoint to reset level state
+	restart_from_checkpoint()
+	
+	# 0.25 second delay?
+	$DeathResetTimer.start()
+	await $DeathResetTimer.timeout
+	
+	# TODO : Allow player movement
+	
+	# Start timer again
+	one_second_timer.paused = false
+	
+	# Fade In Anim
+	death_ui.animation_player.play_backwards("death_fade_in")
+	await death_ui.animation_player.animation_finished
+	return
