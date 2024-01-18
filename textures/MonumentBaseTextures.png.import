@@ -3,21 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwg8kbt70nk85"
-path.s3tc="res://.godot/imported/MonumentBaseTextures.png-9ab127ec744ee42bba7971a38cd00964.s3tc.ctex"
+path="res://.godot/imported/MonumentBaseTextures.png-9ab127ec744ee42bba7971a38cd00964.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://textures/MonumentBaseTextures.png"
-dest_files=["res://.godot/imported/MonumentBaseTextures.png-9ab127ec744ee42bba7971a38cd00964.s3tc.ctex"]
+dest_files=["res://.godot/imported/MonumentBaseTextures.png-9ab127ec744ee42bba7971a38cd00964.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
