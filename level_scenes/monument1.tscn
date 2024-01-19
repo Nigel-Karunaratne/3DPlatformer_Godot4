@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4gnsdnhs7sou"]
+[gd_scene load_steps=30 format=3 uid="uid://c4gnsdnhs7sou"]
 
 [ext_resource type="PackedScene" uid="uid://dtasqdlailihb" path="res://prefab_scenes/game_manager_node.tscn" id="1_h8apo"]
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
@@ -25,19 +25,25 @@
 [ext_resource type="PackedScene" uid="uid://dkqa0tpeg1pg7" path="res://prefab_scenes/checkpoint.tscn" id="22_pej11"]
 [ext_resource type="PackedScene" uid="uid://1rx0ydc3244h" path="res://models/monument/w1-WoodBox.glb" id="23_0ooab"]
 [ext_resource type="PackedScene" uid="uid://diiy7ge2c3mol" path="res://models/monument/w1-StoneBox.glb" id="23_li20w"]
+[ext_resource type="PackedScene" uid="uid://dw0x2vbainagj" path="res://ui_controls/death_ui_control.tscn" id="26_wx61v"]
+[ext_resource type="PackedScene" uid="uid://ccvv518g8817q" path="res://prefab_scenes/kill_area_3d.tscn" id="27_hi0hi"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
 size = Vector2(3000, 3000)
 subdivide_width = 1
 subdivide_depth = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_25oar"]
+size = Vector3(750, 1, 750)
+
 [node name="Node3D" type="Node3D"]
 
-[node name="GameManagerNode" parent="." node_paths=PackedStringArray("checkpoints", "current_checkpoint", "game_ui", "player_ref", "camera_ref") instance=ExtResource("1_h8apo")]
+[node name="GameManagerNode" parent="." node_paths=PackedStringArray("checkpoints", "current_checkpoint", "game_ui", "death_ui", "player_ref", "camera_ref") instance=ExtResource("1_h8apo")]
 checkpoints = [NodePath("../Checkpoints/CheckpointNode3D2"), NodePath("../Checkpoints/CheckpointNode3D3"), NodePath("../Checkpoints/CheckpointNode3D4"), NodePath("../Checkpoints/CheckpointINode3D")]
 current_checkpoint = NodePath("../Checkpoints/CheckpointINode3D")
 level_collectable_count = 32
 game_ui = NodePath("../GameUIControl")
+death_ui = NodePath("../DeathUIControl")
 player_ref = NodePath("../CharacterBody3D")
 camera_ref = NodePath("../CameraSpringArm3D")
 
@@ -807,3 +813,11 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 29, 23, -109)
 
 [node name="GameUIControl" parent="." instance=ExtResource("21_s71o2")]
+
+[node name="DeathUIControl" parent="." instance=ExtResource("26_wx61v")]
+
+[node name="KillArea3D" parent="." instance=ExtResource("27_hi0hi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82, 0)
+shape = SubResource("BoxShape3D_25oar")
