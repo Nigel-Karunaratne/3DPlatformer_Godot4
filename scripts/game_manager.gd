@@ -27,6 +27,8 @@ var d_collectable_current_label : Control
 var d_timer_label : Control
 @export var death_ui : DeathUIControl
 
+var _is_dying : bool = false
+
 # Player Reference Variables
 @export var player_ref : PlayerMove
 @export var camera_ref : PlayerCamera
@@ -93,6 +95,10 @@ func _input(event):
 		player_die()
 		
 func player_die():
+	# Lock (need to finish dying before can die again)
+	if _is_dying:
+		return
+	_is_dying = true
 	# Stop Timers
 	one_second_timer.paused = true
 	
@@ -101,10 +107,8 @@ func player_die():
 	# Fade Out Anim
 	death_ui.animation_player.play("death_fade_in")
 	await death_ui.animation_player.animation_finished
-	
 	# call RestartFromCheckpoint to reset level state
 	restart_from_checkpoint()
-	
 	# 0.25 second delay?
 	$DeathResetTimer.start()
 	await $DeathResetTimer.timeout
@@ -113,8 +117,9 @@ func player_die():
 	
 	# Start timer again
 	one_second_timer.paused = false
-	
 	# Fade In Anim
 	death_ui.animation_player.play_backwards("death_fade_in")
 	await death_ui.animation_player.animation_finished
+	# Unlock
+	_is_dying = false
 	return
