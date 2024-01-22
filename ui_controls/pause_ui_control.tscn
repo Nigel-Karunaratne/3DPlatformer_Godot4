@@ -9,6 +9,7 @@ bg_color = Color(0, 0, 0, 0.352941)
 font_size = 110
 
 [node name="PauseUIControl" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
