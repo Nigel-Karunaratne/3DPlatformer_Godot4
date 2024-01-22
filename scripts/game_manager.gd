@@ -26,6 +26,7 @@ var collectable_count_at_chp : int = 0
 var d_collectable_current_label : Control
 var d_timer_label : Control
 @export var death_ui : DeathUIControl
+@export var pause_ui : PauseUIControl
 
 var _is_dying : bool = false
 
@@ -42,6 +43,9 @@ func _ready():
 	d_timer_label = game_ui.find_child("DTimerLabel", true)
 	d_collectable_current_label.text = str(0)
 	game_ui.find_child("DCollectableTotalLabel", true).text = str(level_collectable_count)
+	
+	pause_ui.gm = self
+	pause_ui.visible = false
 	
 	# TODO - Need to initalize variables? After then, start timer
 	# NOT collectables though - those are a seperate script 
@@ -90,10 +94,13 @@ func restart_from_checkpoint():
 	pass
 	
 func _input(event):
-	if event is InputEventMouseButton:
-		print("mouse button event at ", event.position)
-		player_die()
-		
+	# Pause
+	if Input.is_action_just_pressed("pause_game"):
+		if not get_tree().paused:
+			should_pause()
+		else:
+			should_resume()
+
 func player_die():
 	# Lock (need to finish dying before can die again)
 	if _is_dying:
@@ -123,3 +130,18 @@ func player_die():
 	# Unlock
 	_is_dying = false
 	return
+
+func should_pause():
+	# TODO : Check if can pause (cannot pause if dying)
+	if _is_dying:
+		return
+	
+	pause_ui.setup_and_show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	
+func should_resume():
+	if get_tree().paused:
+		pause_ui.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		get_tree().paused = false
