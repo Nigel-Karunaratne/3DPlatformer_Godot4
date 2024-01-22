@@ -14,6 +14,10 @@ config/name="3dp 4.1.1"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UserSettings="*res://scripts/user_settings.gd"
+
 [display]
 
 window/size/viewport_width=1920
