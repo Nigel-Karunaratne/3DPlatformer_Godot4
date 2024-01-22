@@ -6,17 +6,17 @@ extends SpringArm3D
 @export var player : Node3D
 const CAMERA_SPEED = 0.9
 
-const CONTROLLER_LOOK_H_SPEED = 150
-const CONTROLLER_LOOK_V_SPEED = 150
+var controller_look_h_speed = 150
+var controller_look_v_speed = 150
 
-const MOUSE_LOOK_H_SPEED = 0.25
-const MOUSE_LOOK_V_SPEED = 0.25
+var mouse_look_h_speed = 0.25
+var mouse_look_v_speed = 0.25
 
 var controller_invert_look_h = false
 var controller_invert_look_v = true
 
-var mouse_invert_look_h = false
-var mouse_invert_look_v = true
+var mouse_invert_look_h = true
+var mouse_invert_look_v = false
 
 var mouse_input : Vector2 = Vector2.ZERO
 
@@ -39,6 +39,9 @@ func _ready():
 	if player != null:
 		add_excluded_object(player.get_rid())
 		pass
+	
+	# Setup sensitivities from UserSettings
+	change_sensitivities()
 
 
 func _unhandled_input(event):
@@ -47,8 +50,8 @@ func _unhandled_input(event):
 		# print(event.relative)
 		
 		if not is_resetting_camera:
-			rotation_degrees.x += (event.relative.y * MOUSE_LOOK_H_SPEED) * (-1 if mouse_invert_look_h else 1)
-			rotation_degrees.y += (event.relative.x * MOUSE_LOOK_V_SPEED) * (-1 if mouse_invert_look_v else 1)
+			rotation_degrees.x += (event.relative.y * mouse_look_v_speed) * (-1 if mouse_invert_look_v else 1)
+			rotation_degrees.y += (event.relative.x * mouse_look_h_speed) * (-1 if mouse_invert_look_h else 1)
 			# rotation_degrees.x = clamp(rotation_degrees.x, -90, 30)
 			# rotation_degrees.y = wrapf(rotation_degrees.y, 0, 360)
 		pass
@@ -100,12 +103,24 @@ func _physics_process(delta):
 
 	#Rotate Camera
 	if not is_resetting_camera:
-		rotation_degrees.x -= look_v * delta * CONTROLLER_LOOK_V_SPEED
-		rotation_degrees.y -= look_h * delta * CONTROLLER_LOOK_H_SPEED
+		rotation_degrees.x -= look_v * delta * controller_look_v_speed
+		rotation_degrees.y -= look_h * delta * controller_look_h_speed
 	rotation_degrees.x = clamp(rotation_degrees.x, -70, 30)
 	rotation_degrees.y = wrapf(rotation_degrees.y, 0, 360)
-	# rotate(Vector3.UP, look_h * delta * CONTROLLER_LOOK_H_SPEED)
-	# rotate_object_local(Vector3.RIGHT, look_v * delta * CONTROLLER_LOOK_V_SPEED)
+	# rotate(Vector3.UP, look_h * delta * controller_look_h_speed)
+	# rotate_object_local(Vector3.RIGHT, look_v * delta * controller_look_v_speed)
 	#print(rotation)
 	
+	return
+
+func change_sensitivities():
+	controller_look_h_speed = UserSettings.c_cam_x_sense
+	controller_look_v_speed = UserSettings.c_cam_y_sense
+	controller_invert_look_h = UserSettings.c_invert_x
+	controller_invert_look_v = UserSettings.c_invert_y
+	
+	mouse_look_h_speed = UserSettings.m_cam_x_sense
+	mouse_look_v_speed = UserSettings.m_cam_y_sense
+	mouse_invert_look_h = UserSettings.m_invert_x
+	mouse_invert_look_v = UserSettings.m_invert_y
 	return
