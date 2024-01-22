@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://biot43gjwwssm"]
+
+[ext_resource type="Script" path="res://scripts/title_screen_controller.gd" id="1_ucxw6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nl8b2"]
+font_size = 126
+
+[node name="TitleScreenUIControl" type="Control" node_paths=PackedStringArray("focus_start")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ucxw6")
+focus_start = NodePath("ListPanelContainer/ListVBoxContainer/PlayBTN")
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = -444.0
+offset_right = 506.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleCenterContainer" type="CenterContainer" parent="TitlePanelContainer"]
+layout_mode = 2
+
+[node name="TitileLabel" type="Label" parent="TitlePanelContainer/TitleCenterContainer"]
+layout_mode = 2
+text = "<GAME TITLE>"
+label_settings = SubResource("LabelSettings_nl8b2")
+
+[node name="ListPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = 9.0
+offset_right = 292.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ListVBoxContainer" type="VBoxContainer" parent="ListPanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayBTN" type="Button" parent="ListPanelContainer/ListVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="OptionsBTN" type="Button" parent="ListPanelContainer/ListVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="ExitBTN" type="Button" parent="ListPanelContainer/ListVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit"
+
+[connection signal="pressed" from="ListPanelContainer/ListVBoxContainer/PlayBTN" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="ListPanelContainer/ListVBoxContainer/OptionsBTN" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="ListPanelContainer/ListVBoxContainer/ExitBTN" to="." method="_exit_btn_pressed"]
