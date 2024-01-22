@@ -93,7 +93,7 @@ func restart_from_checkpoint():
 	d_collectable_current_label.text = str(current_collectable_count)
 	pass
 	
-func _input(event):
+func _input(_event):
 	# Pause
 	if Input.is_action_just_pressed("pause_game"):
 		if not get_tree().paused:
@@ -108,6 +108,8 @@ func player_die():
 	_is_dying = true
 	# Stop Timers
 	one_second_timer.paused = true
+	# Disable Camera Follow
+	camera_ref.set_physics_process(false)
 	
 	# TODO : Play Player Death Anim?
 	
@@ -116,6 +118,8 @@ func player_die():
 	await death_ui.animation_player.animation_finished
 	# call RestartFromCheckpoint to reset level state
 	restart_from_checkpoint()
+	# Re-Enable Camera Follow
+	camera_ref.set_physics_process(true)
 	# 0.25 second delay?
 	$DeathResetTimer.start()
 	await $DeathResetTimer.timeout
