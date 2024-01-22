@@ -54,17 +54,17 @@ func _unhandled_input(event):
 		pass
 
 	# Toggle Mouse Cursor
-	elif event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	elif event is InputEventKey and event.pressed:
+#		if event.keycode == KEY_ESCAPE:
+#			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+#				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#			else:
+#				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-		elif event.keycode == KEY_R: #!TEMP OVERHEAD CAMERA BUTTON
-			rotation_degrees.x = -90
-			rotation_degrees.y = -180
-			rotation_degrees.z = 0
+#		elif event.keycode == KEY_R: #!TEMP OVERHEAD CAMERA BUTTON
+#			rotation_degrees.x = -90
+#			rotation_degrees.y = -180
+#			rotation_degrees.z = 0
 	return
 
 

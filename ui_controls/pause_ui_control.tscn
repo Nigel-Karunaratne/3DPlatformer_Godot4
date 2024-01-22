@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmqyyc6nr7ekg"]
+
+[ext_resource type="Script" path="res://scripts/pause_ui_controller.gd" id="1_51srv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01w08"]
+bg_color = Color(0, 0, 0, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0j6y"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdkbp"]
+font_size = 110
+
+[node name="PauseUIControl" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_51srv")
+
+[node name="RootPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_01w08")
+
+[node name="PausedPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.0
+offset_top = 102.0
+offset_right = 390.0
+offset_bottom = 316.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h0j6y")
+
+[node name="PausedLabel" type="Label" parent="PausedPanelContainer"]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_cdkbp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -68.0
+offset_right = 286.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="ButtonPanelContainer"]
+layout_mode = 2
+
+[node name="ResumeBTN" type="Button" parent="ButtonPanelContainer/ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="RestartBTN" type="Button" parent="ButtonPanelContainer/ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="OptionsBTN" type="Button" parent="ButtonPanelContainer/ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="ExitLevelBTN" type="Button" parent="ButtonPanelContainer/ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit Level"
+
+[connection signal="pressed" from="ButtonPanelContainer/ButtonVBoxContainer/ResumeBTN" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="ButtonPanelContainer/ButtonVBoxContainer/RestartBTN" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="ButtonPanelContainer/ButtonVBoxContainer/OptionsBTN" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="ButtonPanelContainer/ButtonVBoxContainer/ExitLevelBTN" to="." method="_on_exit_level_btn_pressed"]
