@@ -41,6 +41,8 @@ func _ready():
 		pass
 	
 	# Setup sensitivities from UserSettings
+	# NOTE: This should be fine, in a normal game the title screen
+	#   is loaded before any scene w/ this camera
 	change_sensitivities()
 
 
