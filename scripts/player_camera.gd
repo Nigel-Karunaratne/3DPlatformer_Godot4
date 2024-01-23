@@ -116,13 +116,13 @@ func _physics_process(delta):
 	return
 
 func change_sensitivities():
-	controller_look_h_speed = UserSettings.c_cam_x_sense
-	controller_look_v_speed = UserSettings.c_cam_y_sense
+	controller_look_h_speed = UserSettings.c_cam_sense
+	controller_look_v_speed = UserSettings.c_cam_sense
 	controller_invert_look_h = UserSettings.c_invert_x
 	controller_invert_look_v = UserSettings.c_invert_y
 	
-	mouse_look_h_speed = UserSettings.m_cam_x_sense
-	mouse_look_v_speed = UserSettings.m_cam_y_sense
+	mouse_look_h_speed = UserSettings.m_cam_sense
+	mouse_look_v_speed = UserSettings.m_cam_sense
 	mouse_invert_look_h = UserSettings.m_invert_x
 	mouse_invert_look_v = UserSettings.m_invert_y
 	return
