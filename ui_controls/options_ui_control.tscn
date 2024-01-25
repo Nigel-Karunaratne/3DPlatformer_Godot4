@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6l8uxl8jsqpc"]
+
+[ext_resource type="Script" path="res://scripts/options_ui_controller.gd" id="1_hktc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7o0l"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 0.784314)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcfht"]
+font_size = 105
+
+[node name="OptionsUIControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hktc3")
+
+[node name="BGPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s7o0l")
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -269.0
+offset_top = 37.0
+offset_right = 269.0
+offset_bottom = 243.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="TitlePanelContainer"]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_vcfht")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 126.0
+offset_top = -199.0
+offset_right = 1106.0
+offset_bottom = 419.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsPanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlsPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MouseVBoxContainer" type="VBoxContainer" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MouseLabel" type="Label" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mouse & Keyboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+text = "X - Sensitivity"
+
+[node name="HSlider" type="HSlider" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.5
+step = 0.125
+value = 0.25
+
+[node name="Label2" type="Label" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Y - Sensitivity"
+
+[node name="HSlider2" type="HSlider" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.5
+step = 0.125
+value = 0.25
+
+[node name="Label3" type="Label" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Invert X"
+
+[node name="CheckBox" type="CheckBox" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/MouseVBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Invert X"
+
+[node name="ControllerVBoxContainer2" type="VBoxContainer" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControllerLabel" type="Label" parent="ControlsPanelContainer/VBoxContainer/HBoxContainer/ControllerVBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controller
+"
+horizontal_alignment = 1
+vertical_alignment = 1
