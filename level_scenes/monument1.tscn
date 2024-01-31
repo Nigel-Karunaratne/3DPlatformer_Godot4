@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://8403utodg4el" path="res://models/monument/w1-SmallPlatform2.glb" id="17_yw0xs"]
 [ext_resource type="PackedScene" uid="uid://bn4guy6trv6wk" path="res://models/monument/w1-LargePlatform3R.glb" id="18_x5xv8"]
 [ext_resource type="PackedScene" uid="uid://i3xl2avmnfh" path="res://prefab_scenes/collectable_node_3d.tscn" id="20_opsjm"]
-[ext_resource type="PackedScene" uid="uid://bm5cnd7y2lvxy" path="res://ui_controls/game_ui_control.tscn" id="21_s71o2"]
+[ext_resource type="PackedScene" uid="uid://bwi5tk1rfq0yy" path="res://ui_controls/game_ui_control.tscn" id="21_s71o2"]
 [ext_resource type="PackedScene" uid="uid://dkqa0tpeg1pg7" path="res://prefab_scenes/checkpoint.tscn" id="22_pej11"]
 [ext_resource type="PackedScene" uid="uid://1rx0ydc3244h" path="res://models/monument/w1-WoodBox.glb" id="23_0ooab"]
 [ext_resource type="PackedScene" uid="uid://diiy7ge2c3mol" path="res://models/monument/w1-StoneBox.glb" id="23_li20w"]
