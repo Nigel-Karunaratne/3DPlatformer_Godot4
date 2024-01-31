@@ -12,11 +12,12 @@ extends Control
 @export var audioSFXSlider : HSlider # Or VSliders? Maybe base class?
 
 func _ready():
-	update_gui_from_settings()
-	pass
+	call_deferred("update_gui_from_settings")
+	#update_gui_from_settings()
 
 # Update slider/toggle values based on values in UserSettings
 func update_gui_from_settings():
+	print("UPDATING GUI")
 	mouseSenseSlider.value = UserSettings.m_cam_sense
 	mouseXInvertBox.button_pressed = UserSettings.m_invert_x
 	mouseYInvertBox.button_pressed = UserSettings.m_invert_y
@@ -29,21 +30,37 @@ func update_gui_from_settings():
 	audioSFXSlider.value = UserSettings.s_sfx_level
 	return
 
-func update_user_settings():
-	# Set user setting values according to UI elements
-	# OR Do it by signals?
-	
-	
-	# Save to disk
-	UserSettings.save_settings()
-	return
-
-# TODO - Finish making functions and connect them in editor
 func _on_mouse_sense_slider_drag_ended(value_changed : bool):
 	if value_changed:
 		UserSettings.m_cam_sense = mouseSenseSlider.value
 
 func _on_controller_sense_slider_drag_ended(value_changed : bool):
 	if value_changed:
-		UserSettings.c_cam_sense = contrSenseSlider.value
+		UserSettings.c_cam_sense = int(contrSenseSlider.value) # controller sense is int
 
+func _on_mouse_invert_x_toggled(button_pressed : bool):
+	UserSettings.m_invert_x = mouseXInvertBox.button_pressed
+
+func _on_mouse_invert_y_toggled(button_pressed : bool):
+	UserSettings.m_invert_y = mouseYInvertBox.button_pressed
+
+func _on_controller_invert_x_toggled(button_pressed : bool):
+	UserSettings.c_invert_x = contrXInvertBox.button_pressed
+
+func _on_controller_invert_y_toggled(button_pressed : bool):
+	UserSettings.c_invert_y = contrYInvertBox.button_pressed
+
+func _on_audio_music_slider_drag_ended(value_changed : bool):
+	if value_changed:
+		UserSettings.s_music_level = audioMusicSlider.value
+
+func _on_audio_sfx_slider_drag_ended(value_changed : bool):
+	if value_changed:
+		UserSettings.s_sfx_level = audioSFXSlider.value
+
+func _on_btn_save_pressed():
+	UserSettings.save_settings()
+
+func _on_btn_reset_pressed():
+	UserSettings.reset_settings()
+	update_gui_from_settings()
