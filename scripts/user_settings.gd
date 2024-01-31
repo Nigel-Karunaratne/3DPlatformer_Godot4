@@ -56,16 +56,16 @@ func load_settings():
 		return
 		
 	
-	config.get_value("M", "m_cam_sense", DEFAULTS["m_cam_sense"])
-	config.get_value("M", "m_invert_x", DEFAULTS["m_invert_x"])
-	config.get_value("M", "m_invert_y", DEFAULTS["m_invert_y"])
+	m_cam_sense = config.get_value("M", "m_cam_sense", DEFAULTS["m_cam_sense"])
+	m_invert_x = config.get_value("M", "m_invert_x", DEFAULTS["m_invert_x"])
+	m_invert_y = config.get_value("M", "m_invert_y", DEFAULTS["m_invert_y"])
 	
-	config.get_value("C", "c_cam_sense", DEFAULTS["c_cam_sense"])
-	config.get_value("C", "c_invert_x", DEFAULTS["c_invert_x"])
-	config.get_value("C", "c_invert_y", DEFAULTS["c_invert_y"])
+	c_cam_sense = config.get_value("C", "c_cam_sense", DEFAULTS["c_cam_sense"])
+	c_invert_x = config.get_value("C", "c_invert_x", DEFAULTS["c_invert_x"])
+	c_invert_y = config.get_value("C", "c_invert_y", DEFAULTS["c_invert_y"])
 	
-	config.get_value("S", "s_music_level", DEFAULTS["s_music_level"])
-	config.get_value("S", "s_sfx_level", DEFAULTS["s_sfx_level"])
+	s_music_level = config.get_value("S", "s_music_level", DEFAULTS["s_music_level"])
+	s_sfx_level = config.get_value("S", "s_sfx_level", DEFAULTS["s_sfx_level"])
 	return
 	
 func _save_default_settings_file():
@@ -84,6 +84,17 @@ func _save_default_settings_file():
 	if error != OK:
 		printerr("Error with creating a default config file: ", error)
 	return
+
+func reset_settings():
+	m_cam_sense = DEFAULTS["m_cam_sense"]
+	m_invert_x = DEFAULTS["m_invert_x"]
+	m_invert_y = DEFAULTS["m_invert_y"]
+	c_cam_sense = DEFAULTS["c_cam_sense"]
+	c_invert_x = DEFAULTS["c_invert_x"]
+	c_invert_y = DEFAULTS["c_invert_y"]
+	s_music_level = DEFAULTS["s_music_level"]
+	s_sfx_level = DEFAULTS["s_sfx_level"]
+	pass
 
 func _ready():
 	load_settings()
