@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6l8uxl8jsqpc"]
+[gd_scene load_steps=4 format=3 uid="uid://b6l8uxl8jsqpc"]
 
 [ext_resource type="Script" path="res://scripts/options_ui_controller.gd" id="1_hktc3"]
 
@@ -7,16 +7,6 @@ bg_color = Color(0.262745, 0.262745, 0.262745, 0.784314)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vcfht"]
 font_size = 105
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_big63"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-expand_margin_left = 2.0
-expand_margin_right = 3.0
 
 [node name="OptionsUIControl" type="Control" node_paths=PackedStringArray("mouseSenseSlider", "mouseXInvertBox", "mouseYInvertBox", "contrSenseSlider", "contrXInvertBox", "contrYInvertBox", "audioMusicSlider", "audioSFXSlider")]
 layout_mode = 3
@@ -185,6 +175,8 @@ text = "Music Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
 
 [node name="LSFX" type="Label" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer"]
 layout_mode = 2
@@ -195,6 +187,8 @@ text = "SFX Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
 
 [node name="SoRPanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -219,24 +213,27 @@ theme_override_constants/margin_bottom = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SoRPanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="BTNSave" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "Save Settings"
-
-[node name="VSeparator" type="VSeparator" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-theme_override_styles/separator = SubResource("StyleBoxFlat_big63")
+theme_override_font_sizes/font_size = 40
+text = "Save 
+Settings"
 
 [node name="BTNReset" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "Reset to Defaults
-& Save"
+theme_override_font_sizes/font_size = 40
+text = "Reset to 
+Defaults & Save"
+
+[node name="BTNQuit" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Exit Settings"
 
 [connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/HSMouseSense" to="." method="_on_mouse_sense_slider_drag_ended"]
 [connection signal="toggled" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBMouseIX" to="." method="_on_mouse_invert_x_toggled"]
@@ -248,3 +245,4 @@ text = "Reset to Defaults
 [connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer/HSSFX" to="." method="_on_audio_sfx_slider_drag_ended"]
 [connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNReset" to="." method="_on_btn_reset_pressed"]
+[connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNQuit" to="." method="_on_btn_quit_pressed"]

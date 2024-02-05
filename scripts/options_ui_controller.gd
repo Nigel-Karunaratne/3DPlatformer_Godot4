@@ -11,9 +11,19 @@ extends Control
 @export var audioMusicSlider : HSlider
 @export var audioSFXSlider : HSlider # Or VSliders? Maybe base class?
 
+signal remove_options_ui
+
 func _ready():
 	call_deferred("update_gui_from_settings")
+	mouseSenseSlider.grab_focus()
 	#update_gui_from_settings()
+
+func _input(_event):
+	if Input.is_action_just_pressed("pause_game"):
+		# Quit menu w/out saving
+		get_viewport().set_input_as_handled()
+		_on_btn_quit_pressed()
+
 
 # Update slider/toggle values based on values in UserSettings
 func update_gui_from_settings():
@@ -64,3 +74,7 @@ func _on_btn_save_pressed():
 func _on_btn_reset_pressed():
 	UserSettings.reset_settings()
 	update_gui_from_settings()
+
+func _on_btn_quit_pressed():
+	emit_signal("remove_options_ui")
+	# queue_free()
