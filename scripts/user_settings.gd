@@ -14,6 +14,8 @@ var c_invert_y : bool = true
 var s_music_level : float = 1.0
 var s_sfx_level : float = 1.0
 
+signal updated_settings
+
 const DEFAULTS = {
 	"m_cam_sense": 0.25,
 	"m_invert_x": true,
@@ -43,6 +45,7 @@ func save_settings():
 	var error = config.save(FILE_PATH)
 	if error != OK:
 		printerr("Error w/ save_settings: ", error)
+	emit_signal("updated_settings")
 	return
 
 func load_settings():
