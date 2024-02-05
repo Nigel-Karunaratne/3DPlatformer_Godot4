@@ -219,15 +219,15 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
-text = "Save 
-Settings"
+text = "Apply &
+Save"
 
 [node name="BTNReset" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Reset to 
-Defaults & Save"
+Defaults"
 
 [node name="BTNQuit" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
