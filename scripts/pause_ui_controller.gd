@@ -5,8 +5,6 @@ var gm : GameManager
 var options_ui_res = preload("res://ui_controls/options_ui_control.tscn")
 var options_ui
 
-var is_in_options
-
 func _ready():
 	reset_focus()
 	return
