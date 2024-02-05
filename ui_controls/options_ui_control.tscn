@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/options_ui_controller.gd" id="1_hktc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7o0l"]
-bg_color = Color(0.262745, 0.262745, 0.262745, 0.784314)
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vcfht"]
 font_size = 105
