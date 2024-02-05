@@ -73,6 +73,7 @@ func _on_btn_save_pressed():
 
 func _on_btn_reset_pressed():
 	UserSettings.reset_settings()
+	UserSettings.save_settings()
 	update_gui_from_settings()
 
 func _on_btn_quit_pressed():
