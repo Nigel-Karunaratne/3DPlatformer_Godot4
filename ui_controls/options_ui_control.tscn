@@ -1,0 +1,248 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6l8uxl8jsqpc"]
+
+[ext_resource type="Script" path="res://scripts/options_ui_controller.gd" id="1_hktc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7o0l"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcfht"]
+font_size = 105
+
+[node name="OptionsUIControl" type="Control" node_paths=PackedStringArray("mouseSenseSlider", "mouseXInvertBox", "mouseYInvertBox", "contrSenseSlider", "contrXInvertBox", "contrYInvertBox", "audioMusicSlider", "audioSFXSlider")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hktc3")
+mouseSenseSlider = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/HSMouseSense")
+mouseXInvertBox = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBMouseIX")
+mouseYInvertBox = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBMouseIY")
+contrSenseSlider = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/HSContSense")
+contrXInvertBox = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBContIX")
+contrYInvertBox = NodePath("OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBContIY")
+audioMusicSlider = NodePath("OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer/HSMusic")
+audioSFXSlider = NodePath("OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer/HSSFX")
+
+[node name="BGPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s7o0l")
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -269.0
+offset_top = 37.0
+offset_right = 269.0
+offset_bottom = 243.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="TitlePanelContainer"]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_vcfht")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -280.0
+offset_right = 490.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanelContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="OptionsPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsMarginContainer" type="MarginContainer" parent="OptionsPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="GridContainer" type="GridContainer" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="LMouseSense" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mouse Sensitivity"
+
+[node name="HSMouseSense" type="HSlider" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.05
+max_value = 1.0
+step = 0.05
+value = 0.25
+
+[node name="LMouseIX" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Invert Mouse X"
+
+[node name="CBMouseIX" type="CheckBox" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LMouseIY" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Invert Mouse Y"
+
+[node name="CBMouseIY" type="CheckBox" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LContSense" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Controller Sensitivity"
+
+[node name="HSContSense" type="HSlider" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 25.0
+max_value = 200.0
+value = 125.0
+
+[node name="LContIX" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Invert Controller X"
+
+[node name="CBContIX" type="CheckBox" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LContIY" type="Label" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Invert Controller Y"
+
+[node name="CBContIY" type="CheckBox" parent="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="OptionsPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioMarginContainer" type="MarginContainer" parent="OptionsPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="GridContainer" type="GridContainer" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="LMusic" type="Label" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Music Volume"
+
+[node name="HSMusic" type="HSlider" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
+
+[node name="LSFX" type="Label" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SFX Volume"
+
+[node name="HSSFX" type="HSlider" parent="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
+
+[node name="SoRPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -490.0
+offset_top = -204.0
+offset_right = 490.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SoRPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SoRPanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BTNSave" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Apply &
+Save"
+
+[node name="BTNReset" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Reset to 
+Defaults"
+
+[node name="BTNQuit" type="Button" parent="SoRPanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Exit Settings"
+
+[connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/HSMouseSense" to="." method="_on_mouse_sense_slider_drag_ended"]
+[connection signal="toggled" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBMouseIX" to="." method="_on_mouse_invert_x_toggled"]
+[connection signal="toggled" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBMouseIY" to="." method="_on_mouse_invert_y_toggled"]
+[connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/HSContSense" to="." method="_on_controller_sense_slider_drag_ended"]
+[connection signal="toggled" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBContIX" to="." method="_on_controller_invert_x_toggled"]
+[connection signal="toggled" from="OptionsPanelContainer/VBoxContainer/ControlsMarginContainer/GridContainer/CBContIY" to="." method="_on_controller_invert_y_toggled"]
+[connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer/HSMusic" to="." method="_on_audio_music_slider_drag_ended"]
+[connection signal="drag_ended" from="OptionsPanelContainer/VBoxContainer/AudioMarginContainer/GridContainer/HSSFX" to="." method="_on_audio_sfx_slider_drag_ended"]
+[connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNSave" to="." method="_on_btn_save_pressed"]
+[connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNReset" to="." method="_on_btn_reset_pressed"]
+[connection signal="pressed" from="SoRPanelContainer/MarginContainer/HBoxContainer/BTNQuit" to="." method="_on_btn_quit_pressed"]

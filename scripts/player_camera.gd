@@ -44,6 +44,7 @@ func _ready():
 	# NOTE: This should be fine, in a normal game the title screen
 	#   is loaded before any scene w/ this camera
 	change_sensitivities()
+	UserSettings.updated_settings.connect(change_sensitivities)
 
 
 func _unhandled_input(event):
