@@ -9,7 +9,7 @@ const NOT_ACTIVE_COLOR : Color = Color(1.0, 0.0, 0.0, 1.0) #Red
 
 func _ready():
 	if checkpoint_ring:
-		checkpoint_ring.get_surface_override_material(0).set("albedo_color", NOT_ACTIVE_COLOR)
+		set_ring_color(NOT_ACTIVE_COLOR)
 	pass
 
 func _on_body_entered(body):
@@ -20,11 +20,15 @@ func _on_body_entered(body):
 		if (gm as GameManager).current_checkpoint != self:
 			(gm as GameManager).on_checkpoint_enter(self)
 			if checkpoint_ring:
-				checkpoint_ring.get_surface_override_material(0).set("albedo_color", ACTIVE_COLOR)
+				set_ring_color(ACTIVE_COLOR)
 		else:
 			print("DO NOTHING!")
 
 func reset_active_color():
 	if checkpoint_ring:
-		checkpoint_ring.get_surface_override_material(0).set("albedo_color", NOT_ACTIVE_COLOR)
+		set_ring_color(NOT_ACTIVE_COLOR)
+
+func set_ring_color(color: Color):
+	checkpoint_ring.get_surface_override_material(0).set("albedo_color", color)
+	checkpoint_ring.get_surface_override_material(0).set("emission", color)
 	
