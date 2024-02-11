@@ -85,7 +85,7 @@ func on_checkpoint_enter(chp : Checkpoint):
 	
 func restart_from_checkpoint():
 	emit_signal("restarting_level")
-	player_ref.position = current_checkpoint.position
+	player_ref.position = current_checkpoint.position + current_checkpoint.respawn_position_offset
 	for col in collectables_since_last_checkpoint:
 		col.visible = true
 		col.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
