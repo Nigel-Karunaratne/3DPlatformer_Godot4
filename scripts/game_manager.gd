@@ -78,6 +78,7 @@ func increment_collectable_count(col : Collectable):
 	d_collectable_current_label.text = str(current_collectable_count)
 	
 func on_checkpoint_enter(chp : Checkpoint):
+	current_checkpoint.reset_active_color()
 	current_checkpoint = chp
 	collectable_count_at_chp = current_collectable_count
 	collectables_since_last_checkpoint.clear()
