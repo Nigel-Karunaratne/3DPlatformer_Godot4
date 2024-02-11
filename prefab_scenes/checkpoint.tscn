@@ -7,7 +7,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_805ti"]
 height = 1.66396
-radius = 1.73829
+radius = 2.39363
 
 [node name="CheckpointNode3D" type="Area3D" node_paths=PackedStringArray("checkpoint_ring") groups=["Checkpoint"]]
 script = ExtResource("1_yie8o")
