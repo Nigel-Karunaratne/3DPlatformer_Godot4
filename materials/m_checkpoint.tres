@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://3nq8sdrrcf7f"]
+
+[ext_resource type="Texture2D" uid="uid://vcuixq0nav6" path="res://textures/CheckpointTexture.png" id="1_ieirq"]
+
+[resource]
+albedo_color = Color(0.913725, 0.521569, 1, 1)
+albedo_texture = ExtResource("1_ieirq")
+emission_enabled = true
+emission = Color(1, 0, 0.984314, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_ieirq")
+texture_filter = 0

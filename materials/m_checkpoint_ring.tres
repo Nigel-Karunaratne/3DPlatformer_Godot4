@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dy2alvcj7xt5e"]
+
+[ext_resource type="Texture2D" uid="uid://bn6gv8ua4imad" path="res://textures/WhiteGradientAlpha.png" id="1_iof0y"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(6.69017e-06, 0.71905, 0.376037, 1)
+albedo_texture = ExtResource("1_iof0y")
+texture_filter = 0
