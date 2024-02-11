@@ -78,6 +78,7 @@ func increment_collectable_count(col : Collectable):
 	d_collectable_current_label.text = str(current_collectable_count)
 	
 func on_checkpoint_enter(chp : Checkpoint):
+	current_checkpoint.reset_active_color()
 	current_checkpoint = chp
 	collectable_count_at_chp = current_collectable_count
 	collectables_since_last_checkpoint.clear()
@@ -85,7 +86,7 @@ func on_checkpoint_enter(chp : Checkpoint):
 	
 func restart_from_checkpoint():
 	emit_signal("restarting_level")
-	player_ref.position = current_checkpoint.position
+	player_ref.position = current_checkpoint.position + current_checkpoint.respawn_position_offset
 	for col in collectables_since_last_checkpoint:
 		col.visible = true
 		col.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)

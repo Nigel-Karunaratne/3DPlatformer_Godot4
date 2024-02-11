@@ -1,23 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkqa0tpeg1pg7"]
+[gd_scene load_steps=6 format=3 uid="uid://dkqa0tpeg1pg7"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_yie8o"]
+[ext_resource type="PackedScene" uid="uid://gfleys1v563l" path="res://models/checkpoint.glb" id="2_ilg5b"]
+[ext_resource type="PackedScene" uid="uid://27voy258knyl" path="res://models/checkpoint_ring.glb" id="3_snfau"]
+[ext_resource type="Material" uid="uid://dy2alvcj7xt5e" path="res://materials/m_checkpoint_ring.tres" id="4_s1ga3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igy6b"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.0352941)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_805ti"]
+height = 1.66396
+radius = 2.39363
 
-[sub_resource type="BoxMesh" id="BoxMesh_phj6x"]
-material = SubResource("StandardMaterial3D_igy6b")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f2cfa"]
-
-[node name="CheckpointNode3D" type="Area3D" groups=["Checkpoint"]]
+[node name="CheckpointNode3D" type="Area3D" node_paths=PackedStringArray("checkpoint_ring") groups=["Checkpoint"]]
 script = ExtResource("1_yie8o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_phj6x")
+checkpoint_ring = NodePath("checkpoint_ring/CheckpointActive")
+respawn_position_offset = Vector3(0, 0.55, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_f2cfa")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.829584, 0)
+shape = SubResource("CylinderShape3D_805ti")
+
+[node name="checkpoint" parent="." instance=ExtResource("2_ilg5b")]
+
+[node name="checkpoint_ring" parent="." instance=ExtResource("3_snfau")]
+
+[node name="CheckpointActive" parent="checkpoint_ring" index="0"]
+surface_material_override/0 = ExtResource("4_s1ga3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="checkpoint_ring"]
