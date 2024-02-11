@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkqa0tpeg1pg7"]
+[gd_scene load_steps=6 format=3 uid="uid://dkqa0tpeg1pg7"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_yie8o"]
-[ext_resource type="PackedScene" uid="uid://csm5s1uy17t50" path="res://models/checkpoint.glb" id="2_ilg5b"]
+[ext_resource type="PackedScene" uid="uid://gfleys1v563l" path="res://models/checkpoint.glb" id="2_ilg5b"]
 [ext_resource type="PackedScene" uid="uid://27voy258knyl" path="res://models/checkpoint_ring.glb" id="3_snfau"]
+[ext_resource type="Material" uid="uid://dy2alvcj7xt5e" path="res://materials/m_checkpoint_ring.tres" id="4_s1ga3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_805ti"]
 height = 1.66396
 radius = 1.73829
 
-[node name="CheckpointNode3D" type="Area3D" groups=["Checkpoint"]]
+[node name="CheckpointNode3D" type="Area3D" node_paths=PackedStringArray("checkpoint_ring") groups=["Checkpoint"]]
 script = ExtResource("1_yie8o")
+checkpoint_ring = NodePath("checkpoint_ring/CheckpointActive")
+respawn_position_offset = Vector3(0, 0.55, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.829584, 0)
@@ -19,4 +22,9 @@ shape = SubResource("CylinderShape3D_805ti")
 
 [node name="checkpoint_ring" parent="." instance=ExtResource("3_snfau")]
 
+[node name="CheckpointActive" parent="checkpoint_ring" index="0"]
+surface_material_override/0 = ExtResource("4_s1ga3")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="checkpoint_ring"]

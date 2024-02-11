@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bn6gv8ua4imad" path="res://textures/WhiteGradientAlpha.png" id="1_iof0y"]
 
 [resource]
+resource_local_to_scene = true
 transparency = 1
 blend_mode = 1
 cull_mode = 2
