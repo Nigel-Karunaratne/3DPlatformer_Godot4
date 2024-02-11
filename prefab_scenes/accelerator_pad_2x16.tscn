@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmr8eblnfqbhp"]
+
+[ext_resource type="Script" path="res://scripts/accelerator_pad.gd" id="1_ggl22"]
+[ext_resource type="PackedScene" uid="uid://umiv6ykwi15p" path="res://models/accel_pad_2x16.glb" id="2_y4g7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcj7f"]
+size = Vector3(1.8, 0.094, 15.8)
+
+[node name="AcceleratorPad2x16_" type="Node3D"]
+script = ExtResource("1_ggl22")
+applied_force = 2.75
+
+[node name="accel_pad_2x16" parent="." instance=ExtResource("2_y4g7u")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249486, -8)
+shape = SubResource("BoxShape3D_mcj7f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="accel_pad_2x16"]

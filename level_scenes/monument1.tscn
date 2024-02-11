@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
 [ext_resource type="PackedScene" uid="uid://c7e2p8vwgm6gw" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
-[ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad.tscn" id="6_o5yom"]
+[ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad_2x16.tscn" id="6_o5yom"]
 [ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
 [ext_resource type="PackedScene" uid="uid://lythk1cmkyct" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
 [ext_resource type="PackedScene" uid="uid://dcpspl0xn5env" path="res://models/monument/w1-MediumPlatform1.glb" id="9_4hl00"]
@@ -331,21 +331,20 @@ additional_direction = Vector3(0, 27, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 16, -158)
 additional_direction = Vector3(0, 38, 0)
 
-[node name="AcceleratorPad" parent="Interactables" instance=ExtResource("6_o5yom")]
-transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -66.5, 35.5, -141)
-applied_force = 0.2
+[node name="AcceleratorPad2x16_" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -66.5, 35.5, -149)
 
-[node name="AcceleratorPad2" parent="Interactables" instance=ExtResource("6_o5yom")]
-transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -71, 35.5, -126)
-applied_force = 0.2
+[node name="AcceleratorPad2x16_2" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -71, 35.5, -132)
 
-[node name="AcceleratorPad3" parent="Interactables" instance=ExtResource("6_o5yom")]
-transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -75, 35.5, -109)
-applied_force = 0.2
+[node name="AcceleratorPad2x16_3" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -75, 35.5, -114)
 
-[node name="AcceleratorPad4" parent="Interactables" instance=ExtResource("6_o5yom")]
-transform = Transform3D(-1.8, 0, -1.39177e-06, 0, 1, 0, 1.57361e-07, 0, -15.92, -71, 35.5, -87.5)
-applied_force = 0.2
+[node name="AcceleratorPad2_16_4" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -72, 35.5, -94.5)
+
+[node name="AcceleratorPad2_16_5" parent="Interactables" instance=ExtResource("6_o5yom")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -70, 35.5, -94.5)
 
 [node name="Collectables" type="Node3D" parent="."]
 

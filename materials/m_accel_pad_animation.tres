@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://61bnxj1kvnqu"]
+
+[ext_resource type="Shader" uid="uid://uvyqlgq0ymlh" path="res://shaders/accel_pad_anim_shader.tres" id="1_0jy8v"]
+[ext_resource type="Texture2D" uid="uid://cvpueou6on72n" path="res://textures/AccelPadAnimatedTexture2.png" id="2_4en5y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0jy8v")
+shader_parameter/panning_speed = 1.0
+shader_parameter/accel_pad_texture = ExtResource("2_4en5y")
