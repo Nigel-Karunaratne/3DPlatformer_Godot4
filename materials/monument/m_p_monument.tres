@@ -1,0 +1,7 @@
+[gd_resource type="PanoramaSkyMaterial" load_steps=2 format=3 uid="uid://csk3r155l2uhj"]
+
+[ext_resource type="Texture2D" uid="uid://diavjrh8avug0" path="res://textures/bg-GreenW.png" id="1_40cjb"]
+
+[resource]
+panorama = ExtResource("1_40cjb")
+filter = false
