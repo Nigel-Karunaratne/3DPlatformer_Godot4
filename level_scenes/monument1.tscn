@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://c4gnsdnhs7sou"]
+[gd_scene load_steps=32 format=3 uid="uid://c4gnsdnhs7sou"]
 
 [ext_resource type="PackedScene" uid="uid://dtasqdlailihb" path="res://prefab_scenes/game_manager_node.tscn" id="1_h8apo"]
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
+[ext_resource type="Environment" uid="uid://ced7srsyp88wf" path="res://post_processing/env_monument.tres" id="1_u3oin"]
 [ext_resource type="PackedScene" uid="uid://ceyhw3o4v3g3n" path="res://prefab_scenes/player.tscn" id="2_u2qu1"]
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
 [ext_resource type="PackedScene" uid="uid://c7e2p8vwgm6gw" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
@@ -38,6 +39,9 @@ subdivide_depth = 1
 size = Vector3(750, 1, 750)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_u3oin")
 
 [node name="GameManagerNode" parent="." node_paths=PackedStringArray("checkpoints", "current_checkpoint", "game_ui", "death_ui", "pause_ui", "player_ref", "camera_ref") instance=ExtResource("1_h8apo")]
 checkpoints = [NodePath("../Checkpoints/CheckpointNode3D2"), NodePath("../Checkpoints/CheckpointNode3D3"), NodePath("../Checkpoints/CheckpointNode3D4"), NodePath("../Checkpoints/CheckpointINode3D")]
