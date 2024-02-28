@@ -13,6 +13,12 @@ var data_dict = {
 	'l1_c' = false, # Were all collectables gathered in one run?. Type is l%_c
 }
 
+# Empty data dictionary, can maybe load from this if no savedata found
+const EMPTY_DATA_DICT = {
+	'l1_t' = 0,
+	'l1_c' = false,
+}
+
 func save_to_disk():
 	var file = FileAccess.open("user://savedata.sav", FileAccess.WRITE)
 	file.store_var(data_dict)
@@ -23,6 +29,12 @@ func load_from_disk():
 	if FileAccess.file_exists("user://savedata.sav"):
 		var file = FileAccess.open("user://savedata.sav", FileAccess.READ)
 		data_dict = file.get_var()
+	else:
+		# Create empty save data and save to disk
+		print("SAVEDATA NOT FOUND, CREATING EMPTY SAVE DATA AND SAVING IT")
+		data_dict = EMPTY_DATA_DICT
+		save_to_disk()
+		pass
 
 func update_level_info(level:Levels, time:int, collected_all:bool):
 	# Get keys
