@@ -44,6 +44,7 @@ func _ready():
 	d_timer_label = game_ui.find_child("DTimerLabel", true)
 	d_collectable_current_label.text = str(0)
 	game_ui.find_child("DCollectableTotalLabel", true).text = str(level_collectable_count)
+	game_ui.find_child("AnimationPlayer").play("RESET")
 	
 	pause_ui.gm = self
 	pause_ui.visible = false
@@ -153,18 +154,21 @@ func should_resume():
 		get_tree().paused = false
 
 func level_should_end():
-	# Stop player movement, put in animation?
+	# Stop player movement
+	# Put player in looping animation?
+	
 	# Stop Timer
 	one_second_timer.stop()
 	# Display Level Win UI
 	
 	# Update game save data
-	var gotall = current_collectable_count>=level_collectable_count
-	GameDataManager.update_level_info(level, get_elapsed_time(), gotall)
+	var gotall_collectibles = current_collectable_count >= level_collectable_count
+	GameDataManager.update_level_info(level, get_elapsed_time(), gotall_collectibles)
 	
 	# Wait for a few seconds
 	await get_tree().create_timer(7.5).timeout
 	
 	# TODO - FTB UI Transition
+	game_ui.find_child("AnimationPlayer").play("fade_out")
 	# TODO - Switch to main menu
 	pass
