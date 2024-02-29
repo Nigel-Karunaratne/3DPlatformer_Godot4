@@ -1,6 +1,9 @@
 extends Node
 # make Autoload
 
+func _ready():
+	load_from_disk()
+
 enum Levels {
 	LEVEL_1 = 1,
 	LEVEL_2 = 2,
@@ -8,8 +11,8 @@ enum Levels {
 }
 
 var data_dict = {
-	'l1_t' = 0,     # Best time (fastest time to complete level). Type is l%_t
-	'l1_c' = false, # Were all collectables gathered in one run?. Type is l%_c
+	'l1_t': 0,     # Best time (fastest time to complete level). Type is l%_t
+	'l1_c': false, # Were all collectables gathered in one run?. Type is l%_c
 }
 
 # Empty data dictionary, can maybe load from this if no savedata found
