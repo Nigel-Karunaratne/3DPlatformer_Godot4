@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4gnsdnhs7sou"]
+[gd_scene load_steps=33 format=3 uid="uid://c4gnsdnhs7sou"]
 
 [ext_resource type="PackedScene" uid="uid://dtasqdlailihb" path="res://prefab_scenes/game_manager_node.tscn" id="1_h8apo"]
 [ext_resource type="Material" uid="uid://dhx50t56hjcnt" path="res://materials/m_grid_verdigris.tres" id="1_o3tyx"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cjga8w2bc7wiu" path="res://prefab_scenes/player_camera.tscn" id="3_vs4iy"]
 [ext_resource type="PackedScene" uid="uid://c7e2p8vwgm6gw" path="res://prefab_scenes/launcher.tscn" id="4_6j2ia"]
 [ext_resource type="PackedScene" uid="uid://7441bmtmni15" path="res://prefab_scenes/spring.tscn" id="5_p8m6u"]
-[ext_resource type="PackedScene" path="res://prefab_scenes/accelerator_pad_2x16.tscn" id="6_o5yom"]
+[ext_resource type="PackedScene" uid="uid://bmr8eblnfqbhp" path="res://prefab_scenes/accelerator_pad_2x16.tscn" id="6_o5yom"]
 [ext_resource type="Material" uid="uid://dsu8jt37pplus" path="res://materials/m_water.tres" id="7_58vyd"]
-[ext_resource type="PackedScene" uid="uid://d2yg1vftlowe1" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
+[ext_resource type="PackedScene" uid="uid://lythk1cmkyct" path="res://models/monument/w1-LargePlatform.glb" id="8_pj8mo"]
 [ext_resource type="PackedScene" uid="uid://dcpspl0xn5env" path="res://models/monument/w1-MediumPlatform1.glb" id="9_4hl00"]
 [ext_resource type="PackedScene" uid="uid://bmok1hpwc1ymm" path="res://models/monument/w1-SmallPlatform1.glb" id="9_t8e4c"]
 [ext_resource type="PackedScene" uid="uid://baemcc15ptxr0" path="res://prefab_scenes/checkpoint_invis.tscn" id="10_81btp"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dw0x2vbainagj" path="res://ui_controls/death_ui_control.tscn" id="26_wx61v"]
 [ext_resource type="PackedScene" uid="uid://ccvv518g8817q" path="res://prefab_scenes/kill_area_3d.tscn" id="27_hi0hi"]
 [ext_resource type="PackedScene" uid="uid://bmqyyc6nr7ekg" path="res://ui_controls/pause_ui_control.tscn" id="27_r7ukf"]
+[ext_resource type="PackedScene" uid="uid://d3nrgn60km1hc" path="res://prefab_scenes/level_end.tscn" id="30_mr27x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
 size = Vector2(3000, 3000)
@@ -828,3 +829,6 @@ transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 29, 23, -1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82, 0)
 shape = SubResource("BoxShape3D_25oar")
+
+[node name="LevelEndArea3D" parent="." instance=ExtResource("30_mr27x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.5, 36.5, 13.5)
