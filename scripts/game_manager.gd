@@ -4,7 +4,7 @@ extends Node
 signal restarting_level
 
 # Timer Variables
-@export var level : GameDataManager.Levels
+@export var level : GameDataManager.Levels = GameDataManager.Levels.LEVEL_NULL
 @onready var one_second_timer : Timer = get_child(0) as Timer
 # can pause timer when game is paused, unpause when game is unpaused.
 # var time_count : int = 0 # TODO - Remove? replaced w/ new method "get_elapsed_time"

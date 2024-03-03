@@ -45,6 +45,7 @@ size = Vector3(750, 1, 750)
 environment = ExtResource("1_u3oin")
 
 [node name="GameManagerNode" parent="." node_paths=PackedStringArray("checkpoints", "current_checkpoint", "game_ui", "death_ui", "pause_ui", "player_ref", "camera_ref") instance=ExtResource("1_h8apo")]
+level = 1
 checkpoints = [NodePath("../Checkpoints/CheckpointNode3D2"), NodePath("../Checkpoints/CheckpointNode3D3"), NodePath("../Checkpoints/CheckpointNode3D4"), NodePath("../Checkpoints/CheckpointINode3D")]
 current_checkpoint = NodePath("../Checkpoints/CheckpointINode3D")
 level_collectable_count = 32

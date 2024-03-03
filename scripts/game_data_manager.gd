@@ -5,6 +5,7 @@ func _ready():
 	load_from_disk()
 
 enum Levels {
+	LEVEL_NULL = 0,
 	LEVEL_1 = 1,
 	LEVEL_2 = 2,
 	LEVEL_3 = 3,
@@ -39,6 +40,8 @@ func load_from_disk():
 		pass
 
 func update_level_info(level:Levels, time:int, collected_all:bool):
+	if level == Levels.LEVEL_NULL:
+		return
 	# Get keys
 	var time_key = 'l%s_t' % level #TODO - does this work?
 	var collectable_key = 'l%s_c' % level
