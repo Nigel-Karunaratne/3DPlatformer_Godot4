@@ -12,6 +12,8 @@ var tmin : int = 0
 var tsec : int = 0
 const time_format_str = "%d:%02d"
 
+const best_time_txt = "Best Time: %d:%02d"
+
 # Checkpoint Variables
 @export var checkpoints : Array[Checkpoint]
 @export var current_checkpoint : Checkpoint
@@ -155,20 +157,26 @@ func should_resume():
 
 func level_should_end():
 	# Stop player movement
-	# Put player in looping animation?
+	player_ref.can_move = false
+	# TODO - Put player in looping animation?
 	
 	# Stop Timer
 	one_second_timer.stop()
-	# Display Level Win UI
-	
 	# Update game save data
 	var gotall_collectibles = current_collectable_count >= level_collectable_count
 	GameDataManager.update_level_info(level, get_elapsed_time(), gotall_collectibles)
 	
-	# Wait for a few seconds
-	await get_tree().create_timer(7.5).timeout
+	# Display Level Win UI
+	var raw_best_time = GameDataManager.get_level_info(level).time
+	var btmin = int(raw_best_time / 60)
+	var btsec = raw_best_time % 60
+	(game_ui.find_child("DBestTimeLabel") as Label).text = best_time_txt % [btmin, btsec]
+	game_ui.find_child("AnimationPlayer").play('show_goal')
 	
-	# TODO - FTB UI Transition
+	# Wait for a few seconds
+	await get_tree().create_timer(5).timeout
+	
+	# FTB UI Transition
 	game_ui.find_child("AnimationPlayer").play("fade_out")
 	# TODO - Switch to main menu
 	pass
