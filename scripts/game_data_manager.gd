@@ -57,3 +57,11 @@ func update_level_info(level:Levels, time:int, collected_all:bool):
 	if updated:
 		save_to_disk()
 	return
+
+func get_level_info(level: Levels):
+	if level == Levels.LEVEL_NULL:
+		return
+	return {
+		time = data_dict['l%s_t' % level],
+		collectable = data_dict['l%s_c' % level]
+	}
