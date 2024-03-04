@@ -31,23 +31,31 @@ var _move_axis = Vector3.ZERO
 var jump_pressed = false
 var is_currently_jumping = false
 
+var can_move = true
+
 func _process(_delta):
+	# Get directional input
 	var h = Input.get_axis("move_left", "move_right")
 	var v = Input.get_axis("move_back", "move_forward") 
 	_move_axis = Vector3(h, 0, -v).normalized() # -Z is forward
-	# jump_pressed = Input.is_action_pressed("jump")
+	#jump_pressed = Input.is_action_pressed("jump")
 
 func _unhandled_input(event):
 	# Short Hopping
 	if Input.is_action_just_released("jump") and is_currently_jumping and velocity.y > 0:
 		velocity.y *= SHORT_HOP_MULTIPLIER 
 	
+	# TODO - Remove!
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_T:
 			velocity.z = -50
 
 
 func _physics_process(delta):
+	# Boolean check useful for stopping player movement
+	if not can_move:
+		return
+	
 	if camera != null:
 		_move_axis = _move_axis.rotated(Vector3.UP, camera.rotation.y).normalized();
 

@@ -4,12 +4,15 @@ extends Node
 signal restarting_level
 
 # Timer Variables
+@export var level : GameDataManager.Levels = GameDataManager.Levels.LEVEL_NULL
 @onready var one_second_timer : Timer = get_child(0) as Timer
 # can pause timer when game is paused, unpause when game is unpaused.
 # var time_count : int = 0 # TODO - Remove? replaced w/ new method "get_elapsed_time"
 var tmin : int = 0
 var tsec : int = 0
 const time_format_str = "%d:%02d"
+
+const best_time_txt = "Best Time: %d:%02d"
 
 # Checkpoint Variables
 @export var checkpoints : Array[Checkpoint]
@@ -43,6 +46,7 @@ func _ready():
 	d_timer_label = game_ui.find_child("DTimerLabel", true)
 	d_collectable_current_label.text = str(0)
 	game_ui.find_child("DCollectableTotalLabel", true).text = str(level_collectable_count)
+	game_ui.find_child("AnimationPlayer").play("RESET")
 	
 	pause_ui.gm = self
 	pause_ui.visible = false
@@ -150,3 +154,29 @@ func should_resume():
 		pause_ui.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().paused = false
+
+func level_should_end():
+	# Stop player movement
+	player_ref.can_move = false
+	# TODO - Put player in looping animation?
+	
+	# Stop Timer
+	one_second_timer.stop()
+	# Update game save data
+	var gotall_collectibles = current_collectable_count >= level_collectable_count
+	GameDataManager.update_level_info(level, get_elapsed_time(), gotall_collectibles)
+	
+	# Display Level Win UI
+	var raw_best_time = GameDataManager.get_level_info(level).time
+	var btmin = int(raw_best_time / 60)
+	var btsec = raw_best_time % 60
+	(game_ui.find_child("DBestTimeLabel") as Label).text = best_time_txt % [btmin, btsec]
+	game_ui.find_child("AnimationPlayer").play('show_goal')
+	
+	# Wait for a few seconds
+	await get_tree().create_timer(5).timeout
+	
+	# FTB UI Transition
+	game_ui.find_child("AnimationPlayer").play("fade_out")
+	# TODO - Switch to main menu
+	pass

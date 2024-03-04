@@ -5,6 +5,7 @@ func _ready():
 	load_from_disk()
 
 enum Levels {
+	LEVEL_NULL = 0,
 	LEVEL_1 = 1,
 	LEVEL_2 = 2,
 	LEVEL_3 = 3,
@@ -39,13 +40,14 @@ func load_from_disk():
 		pass
 
 func update_level_info(level:Levels, time:int, collected_all:bool):
+	if level == Levels.LEVEL_NULL:
+		return
 	# Get keys
-	var time_key = 'l%s_t' % level #TODO - does this work?
+	var time_key = 'l%s_t' % level
 	var collectable_key = 'l%s_c' % level
-	print(time_key, collectable_key)
 	# Check if need to update and if so, update
 	var updated = false
-	if time > data_dict[time_key]:
+	if time < data_dict[time_key]:
 		data_dict[time_key] = time
 		updated = true
 	if not data_dict[collectable_key] and collected_all:
@@ -55,3 +57,11 @@ func update_level_info(level:Levels, time:int, collected_all:bool):
 	if updated:
 		save_to_disk()
 	return
+
+func get_level_info(level: Levels):
+	if level == Levels.LEVEL_NULL:
+		return
+	return {
+		time = data_dict['l%s_t' % level],
+		collectable = data_dict['l%s_c' % level]
+	}
