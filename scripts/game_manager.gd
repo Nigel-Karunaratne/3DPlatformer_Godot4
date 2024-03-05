@@ -173,10 +173,22 @@ func level_should_end():
 	(game_ui.find_child("DBestTimeLabel") as Label).text = best_time_txt % [btmin, btsec]
 	game_ui.find_child("AnimationPlayer").play('show_goal')
 	
+	# Start loading main menu scene
+	ResourceLoader.load_threaded_request(LevelPaths.LEVEL_SELECT_SCENE)
+	
 	# Wait for a few seconds
 	await get_tree().create_timer(5).timeout
 	
 	# FTB UI Transition
 	game_ui.find_child("AnimationPlayer").play("fade_out")
 	# TODO - Switch to main menu
+	var main_menu : Resource
+	if ResourceLoader.load_threaded_get_status(LevelPaths.LEVEL_SELECT_SCENE) == ResourceLoader.THREAD_LOAD_LOADED:
+		main_menu = ResourceLoader.load_threaded_get(LevelPaths.LEVEL_SELECT_SCENE)
+	else:
+		#Do something here? Wait for load and show a loading icon?
+		# while not loaded, await Engine.get_main_loop().process_frame??
+		main_menu = ResourceLoader.load_threaded_get(LevelPaths.LEVEL_SELECT_SCENE)
+		pass
+	get_tree().change_scene_to_packed(main_menu)
 	pass
