@@ -180,7 +180,7 @@ func level_should_end():
 	await get_tree().create_timer(5).timeout
 	
 	# FTB UI Transition
-	game_ui.find_child("AnimationPlayer").play("fade_out")
+	FadeHolder.fade_in()
 	# TODO - Switch to main menu
 	var main_menu : Resource
 	if ResourceLoader.load_threaded_get_status(LevelPaths.LEVEL_SELECT_SCENE) == ResourceLoader.THREAD_LOAD_LOADED:
