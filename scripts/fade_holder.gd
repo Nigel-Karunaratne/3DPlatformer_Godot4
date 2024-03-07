@@ -9,14 +9,16 @@ var _faded_in := false
 func _ready():
 	_instance = _ui.instantiate()
 	add_child(_instance)
-	_anim = _instance.get_child("AnimationPlayer") as AnimationPlayer
+	_anim = _instance.find_child("AnimationPlayer") as AnimationPlayer
 	_anim.play("RESET")
 	pass
 
 func fade_in():
 	if not _faded_in:
 		_anim.play("fade_in")
+		_faded_in = true
 
 func fade_out():
 	if _faded_in:
 		_anim.play("fade_out")
+		_faded_in = false
