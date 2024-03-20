@@ -10,3 +10,4 @@ Text!"
 script = ExtResource("1_0jpeu")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

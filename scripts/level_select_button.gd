@@ -19,3 +19,8 @@ func setup(n_level : GameDataManager.Levels):
 func _on_focus_entered():
 	emit_signal('selected', lname, time, collected)
 	pass
+
+func _on_pressed():
+	# Get level name
+	LevelManager.change_scene_with_fade_enum(level)
+	
