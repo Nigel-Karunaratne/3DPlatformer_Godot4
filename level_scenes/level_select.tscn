@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmn85oa6eulwq"]
+
+[ext_resource type="PackedScene" uid="uid://b1j4a86b3abty" path="res://ui_controls/level_select_ui_control.tscn" id="1_ow064"]
+
+[node name="LevelSelectRoot3D" type="Node3D"]
+
+[node name="LevelSelectUIControl" parent="." instance=ExtResource("1_ow064")]

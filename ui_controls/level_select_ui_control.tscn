@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1j4a86b3abty"]
+
+[ext_resource type="Script" path="res://scripts/level_select_ui_control.gd" id="1_rrrv2"]
+
+[node name="LevelSelectUIControl" type="Control" node_paths=PackedStringArray("level_name_label", "best_time_label", "button_hbox_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrrv2")
+level_name_label = NodePath("LevelTitlePanel/MarginContainer/VBoxContainer/DLevelNameLabel")
+best_time_label = NodePath("LevelTitlePanel/MarginContainer/VBoxContainer/DBestTimeLabel")
+button_hbox_container = NodePath("PanelContainer/MarginContainer/HBoxContainer")
+
+[node name="LevelTitlePanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 34.0
+offset_right = 820.0
+offset_bottom = 236.0
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelTitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelTitlePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="DLevelNameLabel" type="Label" parent="LevelTitlePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 87
+text = "<TITLE>"
+
+[node name="DBestTimeLabel" type="Label" parent="LevelTitlePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Best Time: <1>"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -918.0
+offset_top = -222.0
+offset_right = 918.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
