@@ -12,7 +12,7 @@ var tmin : int = 0
 var tsec : int = 0
 const time_format_str = "%d:%02d"
 
-const best_time_txt = "Best Time: %d:%02d"
+const best_time_txt = "Best Time: %s" #%d:%02d
 
 # Checkpoint Variables
 @export var checkpoints : Array[Checkpoint]
@@ -167,10 +167,11 @@ func level_should_end():
 	GameDataManager.update_level_info(level, get_elapsed_time(), gotall_collectibles)
 	
 	# Display Level Win UI
-	var raw_best_time = GameDataManager.get_level_info(level).time
-	var btmin = int(raw_best_time / 60)
-	var btsec = raw_best_time % 60
-	(game_ui.find_child("DBestTimeLabel") as Label).text = best_time_txt % [btmin, btsec]
+	#var raw_best_time = GameDataManager.get_level_info(level).time
+	#var btmin = int(raw_best_time / 60)
+	#var btsec = raw_best_time % 60
+	var btime = GameDataManager.get_level_info(level)['time_str']
+	(game_ui.find_child("DBestTimeLabel") as Label).text = best_time_txt % btime#[btmin, btsec]
 	game_ui.find_child("AnimationPlayer").play('show_goal')
 	
 	# Start loading main menu scene : NOTE - load happens in LevelManager so not here
