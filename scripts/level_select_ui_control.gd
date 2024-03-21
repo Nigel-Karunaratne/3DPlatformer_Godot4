@@ -6,6 +6,8 @@ extends Control
 @export var button_hbox_container : HBoxContainer
 @export var level_select_button = preload("res://ui_controls/level_select_button.tscn")
 
+signal new_level_selected
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Generate Buttons and parent them to Hboxcontainer
@@ -24,5 +26,6 @@ func _ready():
 func update_ui(lname, time, collected):
 	level_name_label.text = lname
 	best_time_label.text = "Best Time: %s" % time
+	emit_signal("new_level_selected")
 	#TODO - show collected badge
 	#TODO - update background as well
