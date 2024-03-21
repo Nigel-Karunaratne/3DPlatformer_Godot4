@@ -32,4 +32,5 @@ expand_mode = 2
 stretch_mode = 4
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
