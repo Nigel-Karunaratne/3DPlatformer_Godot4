@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 
 UserSettings="*res://scripts/user_settings.gd"
 GameDataManager="*res://scripts/game_data_manager.gd"
+LevelManager="*res://scripts/level_manager.gd"
+GlobalFade="*res://scripts/fade_holder.gd"
 
 [display]
 

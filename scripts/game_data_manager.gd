@@ -22,6 +22,9 @@ const EMPTY_DATA_DICT = {
 	'l1_c' = false,
 }
 
+const LEVEL_NAMES = ['null', "Monument 1"]
+
+
 func save_to_disk():
 	var file = FileAccess.open("user://savedata.sav", FileAccess.WRITE)
 	file.store_var(data_dict)
@@ -62,6 +65,13 @@ func get_level_info(level: Levels):
 	if level == Levels.LEVEL_NULL:
 		return
 	return {
+		name = LEVEL_NAMES[level],
 		time = data_dict['l%s_t' % level],
+		time_str = format_time(data_dict['l%s_t' % level]),
 		collectable = data_dict['l%s_c' % level]
 	}
+	
+func format_time(time):
+	var minute = int(time / 60)
+	var sec = time % 60
+	return "%d:%02d" % [minute, sec]
