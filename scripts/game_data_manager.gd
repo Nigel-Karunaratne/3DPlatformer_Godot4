@@ -18,8 +18,8 @@ var data_dict = {
 
 # Empty data dictionary, can maybe load from this if no savedata found
 const EMPTY_DATA_DICT = {
-	'l1_t' = 0,
-	'l1_c' = false,
+	'l1_t': -1,
+	'l1_c': false,
 }
 
 const LEVEL_NAMES = ['null', "Monument 1"]
@@ -38,7 +38,7 @@ func load_from_disk():
 	else:
 		# Create empty save data and save to disk
 		print("SAVEDATA NOT FOUND, CREATING EMPTY SAVE DATA AND SAVING IT")
-		data_dict = EMPTY_DATA_DICT
+		data_dict = EMPTY_DATA_DICT.duplicate(true)
 		save_to_disk()
 		pass
 
@@ -49,8 +49,9 @@ func update_level_info(level:Levels, time:int, collected_all:bool):
 	var time_key = 'l%s_t' % level
 	var collectable_key = 'l%s_c' % level
 	# Check if need to update and if so, update
+	# NOTE - data_dict[time_key] < 0 means user has not cleared level before
 	var updated = false
-	if time < data_dict[time_key]:
+	if data_dict[time_key] < 0 or time < data_dict[time_key]:
 		data_dict[time_key] = time
 		updated = true
 	if not data_dict[collectable_key] and collected_all:
