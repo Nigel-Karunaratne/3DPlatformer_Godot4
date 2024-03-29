@@ -13,7 +13,11 @@ func setup(n_level : GameDataManager.Levels):
 	level = n_level
 	var data = GameDataManager.get_level_info(level)
 	lname = str(data['name'])
-	time = data['time_str']
+	# if player has not played level, time should reflect that instead of displaying -1
+	if data['time'] < 0:
+		time = "~"
+	else:
+		time = data['time_str']
 	collected = str(data['collectable'])
 
 func _on_focus_entered():
