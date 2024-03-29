@@ -13,7 +13,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Generate Buttons and parent them to Hboxcontainer
 	var start_selected_level = 1
-	for i in range(1,2):
+	for i in range(1,GameDataManager.LEVEL_COUNT+1):
 		var btn = level_select_button.instantiate() as LevelSelectButton
 		btn.setup(i)
 		#btn.selected.connect(update_ui.bind([btn.lname, btn.time, btn.collected]))
