@@ -30,6 +30,7 @@ var can_double_jump: bool = true
 var _move_axis = Vector3.ZERO
 var jump_pressed = false
 var is_currently_jumping = false
+var launched_from_spring = false
 
 var can_move = true
 
@@ -42,7 +43,7 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	# Short Hopping
-	if Input.is_action_just_released("jump") and is_currently_jumping and velocity.y > 0:
+	if Input.is_action_just_released("jump") and is_currently_jumping and not launched_from_spring and velocity.y > 0:
 		velocity.y *= SHORT_HOP_MULTIPLIER 
 	
 	# TODO - Remove!
@@ -89,6 +90,7 @@ func _physics_process(delta):
 
 
 	if is_on_floor():
+		launched_from_spring = false
 		if jump_pressed and !is_currently_jumping:
 			velocity.y = JUMP_VELOCITY
 			is_currently_jumping = true

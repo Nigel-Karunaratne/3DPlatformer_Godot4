@@ -37,6 +37,11 @@ func _on_body_entered(body:Node3D):
 					body.velocity = Vector3.ZERO
 				body.launch_player_spring((velocity * -basis.z))
 				body.velocity += additional_direction
+		if launcher_type == LauncherType.SPRING:
+			# reset player's ability to double jump
+			(body as PlayerMove).can_double_jump = true
+			(body as PlayerMove).launched_from_spring = true
+			pass
 		
 		#Animate
 		if tween:
