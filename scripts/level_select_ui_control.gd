@@ -10,6 +10,7 @@ signal new_level_selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Generate Buttons and parent them to Hboxcontainer
 	var start_selected_level = 1
 	for i in range(1,2):
