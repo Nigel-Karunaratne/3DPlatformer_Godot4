@@ -50,6 +50,8 @@ func _remove_options_ui():
 
 
 func _on_exit_level_btn_pressed():
+	start_resuming()
+	LevelManager.change_scene_with_fade(LevelManager.LEVEL_SELECT_SCENE, true)
 	pass # Replace with function body.
 
 func start_resuming():
