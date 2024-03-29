@@ -4,6 +4,8 @@ extends Node
 func _ready():
 	load_from_disk()
 
+const LEVEL_COUNT = 2
+
 enum Levels {
 	LEVEL_NULL = 0,
 	LEVEL_1 = 1,
@@ -14,15 +16,19 @@ enum Levels {
 var data_dict = {
 	'l1_t': 0,     # Best time (fastest time to complete level). Type is l%_t
 	'l1_c': false, # Were all collectables gathered in one run?. Type is l%_c
+	'l2_t': 0,
+	'l2_c': false,
 }
 
 # Empty data dictionary, can maybe load from this if no savedata found
 const EMPTY_DATA_DICT = {
 	'l1_t': -1,
 	'l1_c': false,
+	'l2_t': -1,
+	'l2_c': false,
 }
 
-const LEVEL_NAMES = ['null', "Monument 1"]
+const LEVEL_NAMES = ['null', "Monument 1", "Monument 2"]
 
 
 func save_to_disk():
