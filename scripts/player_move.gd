@@ -7,7 +7,7 @@ extends CharacterBody3D
 var _fly = false##!!DEBUG
 
 # Movement Variables
-const ACCEL_SPEED = 2.1
+const ACCEL_SPEED = 2.39
 const MAX_SPEED = 9
 const GRAVITY = 30
 const JUMP_VELOCITY = 12
