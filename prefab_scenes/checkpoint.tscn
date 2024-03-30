@@ -9,9 +9,8 @@
 height = 1.66396
 radius = 2.39363
 
-[node name="CheckpointNode3D" type="Area3D" node_paths=PackedStringArray("checkpoint_ring") groups=["Checkpoint"]]
+[node name="CheckpointNode3D" type="Area3D" groups=["Checkpoint"]]
 script = ExtResource("1_yie8o")
-checkpoint_ring = NodePath("checkpoint_ring/CheckpointActive")
 respawn_position_offset = Vector3(0, 0.55, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
