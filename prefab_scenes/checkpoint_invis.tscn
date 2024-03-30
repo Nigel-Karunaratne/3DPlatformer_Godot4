@@ -14,6 +14,7 @@ material = SubResource("StandardMaterial3D_igy6b")
 [node name="CheckpointINode3D" type="Area3D" groups=["Checkpoint"]]
 script = ExtResource("1_6xwsq")
 is_level_start = true
+can_trigger = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_phj6x")

@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_d8cf5"]
 
-[node name="GameManagerNode" type="Node"]
+[node name="GameManagerNode" type="Node" node_paths=PackedStringArray("checkpoints")]
 process_mode = 3
 script = ExtResource("1_d8cf5")
+checkpoints = [null, null, null, null]
 
 [node name="OneSecondTimer" type="Timer" parent="."]
 process_mode = 1

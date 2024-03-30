@@ -2,18 +2,21 @@ class_name Checkpoint
 extends Node3D
 
 @export var is_level_start: bool = false
-@export var checkpoint_ring: MeshInstance3D
+var checkpoint_ring: MeshInstance3D
 @export var respawn_position_offset : Vector3
+@export var can_trigger : bool = true
 const ACTIVE_COLOR : Color = Color(0.0, 0.71, 0.31, 1.0) #Green
 const NOT_ACTIVE_COLOR : Color = Color(1.0, 0.0, 0.0, 1.0) #Red
 
 func _ready():
+	if find_child("checkpoint_ring"):
+		checkpoint_ring = $checkpoint_ring/CheckpointActive
 	if checkpoint_ring:
 		set_ring_color(NOT_ACTIVE_COLOR)
 	pass
 
 func _on_body_entered(body):
-	if body is PlayerMove:
+	if can_trigger and body is PlayerMove:
 		# TODO - Find a better way PLEASE
 		var root = get_tree().get_root()
 		var gm = root.get_child(root.get_child_count()-1).find_child("GameManagerNode")
