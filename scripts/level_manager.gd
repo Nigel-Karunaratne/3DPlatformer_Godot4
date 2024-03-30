@@ -6,15 +6,16 @@ const LEVEL_SELECT_SCENE = "res://level_scenes/level_select.tscn"
 
 const DELAY_BETWEEN_LOAD = 1.5
 
-const level_names = {
+const LEVEL_FILE_NAMES = {
 	1: "monument1",
+	2: "monument2",
 }
 
 func get_level_name(level: GameDataManager.Levels):
-	return level_names[level]
+	return LEVEL_FILE_NAMES[level]
 
 func change_scene_with_fade_enum(level:GameDataManager.Levels):
-	change_scene_with_fade(level_names[level])
+	change_scene_with_fade(LEVEL_FILE_NAMES[level])
 	pass
 
 func change_scene_with_fade(level_filename : String, fullpath : bool = false):
