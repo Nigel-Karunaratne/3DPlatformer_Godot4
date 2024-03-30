@@ -44,7 +44,7 @@ environment = ExtResource("1_ma4m0")
 level = 2
 checkpoints = [NodePath("../Checkpoints/CheckpointINode3D"), NodePath("../Checkpoints/CheckpointNode3D"), NodePath("../Checkpoints/CheckpointNode3D2"), NodePath("../Checkpoints/CheckpointNode3D3")]
 current_checkpoint = NodePath("../Checkpoints/CheckpointINode3D")
-level_collectable_count = 82
+level_collectable_count = 83
 game_ui = NodePath("../GameUIControl")
 death_ui = NodePath("../DeathUIControl")
 pause_ui = NodePath("../PauseUIControl")
@@ -303,6 +303,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5, 12, 3.5)
 
 [node name="CollectableNode3D55" parent="Collectables" instance=ExtResource("9_6doeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 12.5, -42)
+
+[node name="CollectableNode3D62" parent="Collectables" instance=ExtResource("9_6doeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 12.5, -40)
 
 [node name="CollectableNode3D57" parent="Collectables" instance=ExtResource("9_6doeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, 12.5, -42)
