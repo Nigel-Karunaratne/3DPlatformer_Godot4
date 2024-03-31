@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=20 format=3 uid="uid://cwvhuflsc3xcl"]
+[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://cwvhuflsc3xcl"]
 
 [ext_resource type="Texture2D" uid="uid://dgg6xdbwqwsf7" path="res://textures/32-32-noise.png" id="1_va886"]
 
@@ -43,8 +43,8 @@ texture_filter = 1
 function = 0
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8yeku"]
-default_input_values = [0, 0.0, 1, 0.001]
-operator = 2
+default_input_values = [0, 0.0, 1, 4000.0]
+operator = 3
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_fen13"]
 output_port_for_preview = 0
@@ -68,8 +68,13 @@ op_type = 0
 function = 1
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_hprri"]
-default_input_values = [0, 0.0, 1, 0.001]
-operator = 2
+default_input_values = [0, 0.0, 1, 4000.0]
+operator = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ti7ip"]
+parameter_name = "TextureScale"
+default_value_enabled = true
+default_value = 500.0
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8b27h"]
 input_name = "time"
@@ -80,6 +85,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 uniform vec4 BaseAlbedo : source_color = vec4(0.000009, 0.462072, 0.603575, 1.000000);
 uniform float WaterSpeed : hint_range(0, 5) = 0.20000000298023;
+uniform float TextureScale = 500;
 uniform sampler2D WaterTexture : filter_nearest;
 
 
@@ -102,8 +108,8 @@ void fragment() {
 
 
 // FloatOp:35
-	float n_in35p1 = 0.00100;
-	float n_out35p0 = n_out33p0 * n_in35p1;
+	float n_in35p1 = 4000.00000;
+	float n_out35p0 = n_out33p0 / n_in35p1;
 
 
 // FloatFunc:46
@@ -111,8 +117,8 @@ void fragment() {
 
 
 // FloatOp:47
-	float n_in47p1 = 0.00100;
-	float n_out47p0 = n_out46p0 * n_in47p1;
+	float n_in47p1 = 4000.00000;
+	float n_out47p0 = n_out46p0 / n_in47p1;
 
 
 // VectorCompose:45
@@ -123,10 +129,13 @@ void fragment() {
 	vec2 n_out26p0 = n_out45p0 * vec2(n_out10p0) + UV;
 
 
+// FloatParameter:48
+	float n_out48p0 = TextureScale;
+
+
 // UVFunc:30
-	vec2 n_in30p1 = vec2(100.00000, 100.00000);
 	vec2 n_in30p2 = vec2(0.00000, 0.00000);
-	vec2 n_out30p0 = (n_out26p0 - n_in30p2) * n_in30p1 + n_in30p2;
+	vec2 n_out30p0 = (n_out26p0 - n_in30p2) * vec2(n_out48p0) + n_in30p2;
 
 
 	vec4 n_out31p0;
@@ -177,7 +186,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-872.207, 263.614)
+graph_offset = Vector2(-1109.27, -142.69)
 nodes/fragment/0/position = Vector2(1000, 180)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_xdq38")
 nodes/fragment/2/position = Vector2(-320, -180)
@@ -215,4 +224,6 @@ nodes/fragment/46/node = SubResource("VisualShaderNodeFloatFunc_dvllb")
 nodes/fragment/46/position = Vector2(-1480, 780)
 nodes/fragment/47/node = SubResource("VisualShaderNodeFloatOp_hprri")
 nodes/fragment/47/position = Vector2(-1280, 620)
-nodes/fragment/connections = PackedInt32Array(3, 0, 0, 3, 4, 0, 0, 4, 2, 0, 23, 0, 32, 0, 31, 2, 30, 0, 31, 0, 10, 0, 26, 1, 33, 0, 35, 0, 9, 0, 33, 0, 9, 0, 36, 0, 31, 0, 23, 1, 23, 0, 43, 0, 2, 0, 43, 1, 26, 0, 30, 0, 36, 0, 44, 0, 44, 0, 43, 2, 45, 0, 26, 2, 35, 0, 45, 0, 9, 0, 46, 0, 46, 0, 47, 0, 47, 0, 45, 1, 43, 0, 0, 0)
+nodes/fragment/48/node = SubResource("VisualShaderNodeFloatParameter_ti7ip")
+nodes/fragment/48/position = Vector2(-960, 680)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 3, 4, 0, 0, 4, 2, 0, 23, 0, 32, 0, 31, 2, 30, 0, 31, 0, 10, 0, 26, 1, 33, 0, 35, 0, 9, 0, 33, 0, 9, 0, 36, 0, 31, 0, 23, 1, 23, 0, 43, 0, 2, 0, 43, 1, 26, 0, 30, 0, 36, 0, 44, 0, 44, 0, 43, 2, 45, 0, 26, 2, 35, 0, 45, 0, 9, 0, 46, 0, 46, 0, 47, 0, 47, 0, 45, 1, 43, 0, 0, 0, 48, 0, 30, 1)
