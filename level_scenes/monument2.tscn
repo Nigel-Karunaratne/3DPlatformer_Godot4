@@ -28,9 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://ccvv518g8817q" path="res://prefab_scenes/kill_area_3d.tscn" id="29_3wqo3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
-size = Vector2(3000, 3000)
-subdivide_width = 1
-subdivide_depth = 1
+material = ExtResource("12_0v0md")
+size = Vector2(6700, 6700)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25oar"]
 size = Vector3(750, 3.05506, 750)
@@ -423,7 +422,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 23.5, -59)
 [node name="WaterPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("PlaneMesh_8u2ux")
-surface_material_override/0 = ExtResource("12_0v0md")
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
