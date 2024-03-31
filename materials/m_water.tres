@@ -1,8 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dsu8jt37pplus"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dsu8jt37pplus"]
 
 [ext_resource type="Shader" uid="uid://cwvhuflsc3xcl" path="res://shaders/s_water.tres" id="1_r1p6o"]
+[ext_resource type="Texture2D" uid="uid://dgg6xdbwqwsf7" path="res://textures/32-32-noise.png" id="2_8adfu"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_r1p6o")
 shader_parameter/BaseAlbedo = Color(9e-06, 0.462072, 0.603575, 1)
+shader_parameter/WaterTexture = ExtResource("2_8adfu")
