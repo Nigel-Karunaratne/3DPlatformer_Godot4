@@ -32,7 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://d3nrgn60km1hc" path="res://prefab_scenes/level_end.tscn" id="30_mr27x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8u2ux"]
-size = Vector2(3000, 3000)
+material = ExtResource("7_58vyd")
+size = Vector2(6700, 6700)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25oar"]
 size = Vector3(750, 3.05506, 750)
@@ -570,7 +571,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="WaterPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("PlaneMesh_8u2ux")
-surface_material_override/0 = ExtResource("7_58vyd")
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
