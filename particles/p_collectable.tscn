@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dck4n5x0oa7i5"]
+
+[sub_resource type="Gradient" id="Gradient_28kh1"]
+colors = PackedColorArray(0.690498, 0.496549, 1.92523e-07, 1, 0.775025, 0.709405, 0.545372, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_napj7"]
+gradient = SubResource("Gradient_28kh1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2tkei"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 7.0
+gravity = Vector3(0, -20, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+color_ramp = SubResource("GradientTexture1D_napj7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am2sy"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3w8cc"]
+material = SubResource("StandardMaterial3D_am2sy")
+size = Vector2(0.1, 0.1)
+
+[node name="Collectable_GPUParticles" type="GPUParticles3D"]
+emitting = false
+amount = 20
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2tkei")
+draw_pass_1 = SubResource("QuadMesh_3w8cc")
